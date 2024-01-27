@@ -1810,10 +1810,10 @@ _face_face:
 	section	.data,"aw",@progbits
 	public	_face_verts
 _face_verts:
-	dd	0x43340000
-	dd	0x430c0000
-	dd	0x430c0000
-	dd	0x42c80000
+	dd	0x433e0000
+	dd	0x43160000
+	dd	0x43160000
+	dd	0x42dc0000
 
 	section	.bss,"aw",@nobits
 	public	_face_norms

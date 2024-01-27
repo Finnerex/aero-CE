@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "simulation.h": "c",
-        "graphx.h": "c"
+        "graphx.h": "c",
+        "iosfwd": "c"
     }
 }

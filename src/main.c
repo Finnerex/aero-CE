@@ -35,7 +35,6 @@ int main() {
 // global vars
 sim_state_t sim_state;
 
-
 bool step(void) {
     
     kb_Scan();
@@ -74,22 +73,22 @@ void draw(void) {
 
     draw_object(sim_state.object);
     draw_info(&sim_state);
+    draw_forces(&sim_state);
 
-    
 }
 
 
 void begin(void) {
 
     sim_state.wind_velocity.x = INIT_WIND_SPEED;
-    sim_state.object = &square;
+    sim_state.object = square;
     sim_state.coef_drag = INIT_COEF_DRAG;
     sim_state.air_density = INIT_AIR_DENSITY;
 
     for (int i = 0; i < sim_state.object->num_faces; i++) {
-        vec2_t verts[2] = {sim_state.object->verts[sim_state.object->faces[i][0]],
-                           sim_state.object->verts[sim_state.object->faces[i][1]]}; 
-        sim_state.object->normals[i] = get_face_normal(verts[0], verts[1]);
+        vec2_t* verts[2] = {sim_state.object->verts[*sim_state.object->faces[i][0]],
+                            sim_state.object->verts[*sim_state.object->faces[i][1]]}; 
+        *sim_state.object->normals[i] = get_face_normal(*verts[0], *verts[1]);
     }
 }
 

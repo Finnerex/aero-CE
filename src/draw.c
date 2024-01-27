@@ -3,10 +3,10 @@
 #include "draw.h"
 #include <graphx.h>
 
-void draw_object(object_t* obj) {
+void draw_object(obj_t* obj) {
 
     for (int i = 0; i < obj->num_faces; i++) {
-        vec2_t* verts[2] = {&obj->verts[obj->faces[i][0]], &obj->verts[obj->faces[i][1]]};
+        vec2_t* verts[2] = {obj->verts[*obj->faces[i][0]], obj->verts[*obj->faces[i][1]]};
         gfx_Line(verts[0]->x, verts[0]->y, verts[1]->x, verts[1]->y);
     }
 
@@ -25,7 +25,7 @@ void draw_info(sim_state_t* state) {
     gfx_SetTextXY(5, GFX_LCD_HEIGHT - INFO_SECT_HEIGHT / 2);
     gfx_PrintString("Wind Speed: ");
     print_float(state->wind_speed, 1);
-    gfx_PrintSting("m/s");
+    gfx_PrintString("m/s");
     
     gfx_SetTextXY(GFX_LCD_WIDTH, GFX_LCD_HEIGHT - INFO_SECT_HEIGHT / 2);
     gfx_PrintString("\tAir Density: ");
@@ -36,4 +36,7 @@ void draw_info(sim_state_t* state) {
 
 void draw_forces(sim_state_t* state) {
     
+    gfx_Line(CENTER_X, CENTER_Y, CENTER_X, CENTER_Y + state->net_force.y); // lift arrow body
+    gfx_Line(CENTER_X, CENTER_Y, CENTER_X + state->net_force.x, CENTER_Y); // drag arrow body
+    gfx_Line(CENTER_X, CENTER_Y, CENTER_X + state->net_force.x, CENTER_Y + state->net_force.y); // net force arrow body
 }

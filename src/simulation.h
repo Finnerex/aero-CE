@@ -3,7 +3,7 @@
 
 #include "vector.h"
 
-#define PIXELS_PER_METER 50
+#define PIXELS_PER_METER 50.0f
 #define INIT_WIND_SPEED 10.0f
 #define INIT_COEF_DRAG 0.05f
 #define INIT_AIR_DENSITY 1.225f
@@ -15,13 +15,14 @@
 typedef int face_t[2];
 
 typedef struct {
-    face_t* faces; // 8 max faces
-    vec2_t* verts;
-    vec2_t normals[8]; // not actually normalized vectors because length
+    vec2_t* normals[8];// not actually normalized vectors because length
+    
+    face_t** faces; // 8 max faces
+    vec2_t** verts;
 
     int num_faces;
     int num_verts;
-} object_t;
+} obj_t;
 
 typedef struct {
     vec2_t wind_velocity; // this is in meters though
@@ -31,11 +32,11 @@ typedef struct {
     vec2_t net_force;
     float coef_drag;
 
-    object_t* object;
+    obj_t* object;
     
 } sim_state_t;
 
-vec2_t calculate_net_force(sim_state_t sim_state);
+vec2_t calculate_net_force(sim_state_t* sim_state);
 void update_sim_state(sim_state_t* sim_state);
 
 #endif

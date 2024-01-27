@@ -74,7 +74,7 @@ vec2_t get_face_normal(vec2_t vert1, vec2_t vert2) { // normal * length
     float distance_from_center = vec_Magnitude(vec_Subtract(vec_check, center_vec));
     float distance_from_center2 = vec_Magnitude(vec_Subtract(vec_check2, center_vec));
 
-    if (distance_from_center > distance_from_center2)
+    if (distance_from_center < distance_from_center2)
         return normal_vec;
 
     return normal_vec2;

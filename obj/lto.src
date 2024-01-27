@@ -1590,10 +1590,13 @@ _get_face_normal:
 	push	hl
 	push	bc
 	call	_sqrtf
+	push	hl
 	pop	bc
-	pop	bc
-	ld	bc, (ix - 21)
-	ld	a, (ix - 22)
+	ld	a, e
+	pop	hl
+	pop	hl
+	ld	hl, (ix - 21)
+	ld	e, (ix - 22)
 	call	__fcmp
 	jp	m, BB19_2
 	ld	a, 0

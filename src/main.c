@@ -48,7 +48,7 @@ bool step(void) {
     if (kb_Data[7] & kb_Up)
         sim_state.wind_velocity = vec_Rotate(sim_state.wind_velocity, 0.05f);
     else if (kb_Data[7] & kb_Down)
-        sim_state.wind_velocity = vec_Rotate(sim_state.wind_velocity, 0.05f);
+        sim_state.wind_velocity = vec_Rotate(sim_state.wind_velocity, -0.05f);
 
         
 

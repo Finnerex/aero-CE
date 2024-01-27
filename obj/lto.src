@@ -93,73 +93,33 @@ BB0_3:
 	section	.text,"ax",@progbits
 	public	_print_float
 _print_float:
-	ld	hl, -7
+	ld	hl, -3
 	call	__frameset
 	ld	bc, (ix + 6)
-	ld	(ix - 6), bc
-	ld	a, (ix + 9)
-	ld	(ix - 7), a
-	ld	hl, (ix + 12)
-	ld	(ix - 3), hl
-	call	__ftol
-	ld	hl, 1
-	push	hl
-	push	bc
-	call	_gfx_PrintInt
-	pop	hl
-	pop	hl
-	ld	hl, _.str
-	push	hl
-	call	_gfx_PrintString
-	pop	hl
-	ld	bc, (ix - 6)
-	ld	a, (ix - 7)
+	ld	iy, (ix + 12)
 	ld	hl, 2097152
 	ld	e, 65
+	ld	a, (ix + 9)
 	call	__fmul
-	ld	(ix - 6), bc
+	ld	(ix - 3), bc
 	ld	d, a
-	ld	hl, (ix - 3)
-	push	hl
-	pop	iy
+	lea	hl, iy
 	push	hl
 	pop	bc
 	add	iy, iy
 	sbc	hl, hl
-	push	bc
-	pop	iy
 	ld	a, l
 	call	__ltof
 	push	bc
 	pop	hl
 	ld	e, a
-	ld	bc, (ix - 6)
+	ld	bc, (ix - 3)
 	ld	a, d
 	call	__fmul
 	call	__ftol
-	push	bc
-	pop	de
-	lea	hl, iy
-	ld	bc, 10
-	call	__imulu
-	push	hl
-	pop	bc
-	ex	de, hl
-	call	__irems
-	push	hl
-	pop	de
-	push	de
-	pop	iy
-	add	iy, iy
-	sbc	hl, hl
-	push	hl
-	pop	bc
-	ex	de, hl
-	add	hl, bc
-	call	__ixor
-	ld	(ix + 6), hl
+	ld	(ix + 6), bc
 	ld	(ix + 9), 1
-	ld	sp, ix
+	pop	hl
 	pop	ix
 	jp	_gfx_PrintInt
 	section	.text,"ax",@progbits
@@ -187,7 +147,7 @@ _draw_info:
 	call	_gfx_SetTextXY
 	pop	hl
 	pop	hl
-	ld	hl, _.str.1
+	ld	hl, _.str
 	push	hl
 	call	_gfx_PrintString
 	pop	hl
@@ -203,7 +163,7 @@ _draw_info:
 	pop	hl
 	pop	hl
 	pop	hl
-	ld	hl, _.str.2
+	ld	hl, _.str.1
 	push	hl
 	call	_gfx_PrintString
 	pop	hl
@@ -214,7 +174,7 @@ _draw_info:
 	call	_gfx_SetTextXY
 	pop	hl
 	pop	hl
-	ld	hl, _.str.3
+	ld	hl, _.str.2
 	push	hl
 	call	_gfx_PrintString
 	pop	hl
@@ -230,7 +190,7 @@ _draw_info:
 	pop	hl
 	pop	hl
 	pop	hl
-	ld	hl, _.str.4
+	ld	hl, _.str.3
 	push	hl
 	call	_gfx_PrintString
 	pop	hl
@@ -332,7 +292,7 @@ _draw_forces:
 	call	_gfx_SetTextXY
 	pop	hl
 	pop	hl
-	ld	hl, _.str.5
+	ld	hl, _.str.4
 	push	hl
 	call	_gfx_PrintString
 	pop	hl
@@ -379,7 +339,7 @@ _draw_forces:
 	push	hl
 	call	_gfx_SetTextFGColor
 	pop	hl
-	ld	hl, _.str.6
+	ld	hl, _.str.5
 	push	hl
 	call	_gfx_PrintString
 	pop	hl
@@ -433,7 +393,7 @@ _draw_forces:
 	push	hl
 	call	_gfx_SetTextFGColor
 	pop	hl
-	ld	hl, _.str.7
+	ld	hl, _.str.6
 	push	hl
 	call	_gfx_PrintString
 	pop	hl
@@ -694,7 +654,7 @@ _step:
 	ldir
 	ld	hl, 5033165
 	ld	(iy + 9), hl
-	ld	(iy + 12), 61
+	ld	(iy + 12), -67
 	pea	ix - 8
 	call	_vec_Rotate
 	ld	iy, (ix - 11)
@@ -1718,41 +1678,36 @@ BB19_9:
 	section	.rodata,"a",@progbits
 	private	_.str
 _.str:
-	db	".", 0
+	db	"Wind Speed: ", 0
 
 	section	.rodata,"a",@progbits
 	private	_.str.1
 _.str.1:
-	db	"Wind Speed: ", 0
+	db	"m/s", 0
 
 	section	.rodata,"a",@progbits
 	private	_.str.2
 _.str.2:
-	db	"m/s", 0
+	db	"Air Density: ", 0
 
 	section	.rodata,"a",@progbits
 	private	_.str.3
 _.str.3:
-	db	"Air Density: ", 0
+	db	"kg/m^3", 0
 
 	section	.rodata,"a",@progbits
 	private	_.str.4
 _.str.4:
-	db	"kg/m^3", 0
+	db	"Lift: ", 0
 
 	section	.rodata,"a",@progbits
 	private	_.str.5
 _.str.5:
-	db	"Lift: ", 0
+	db	" Drag: ", 0
 
 	section	.rodata,"a",@progbits
 	private	_.str.6
 _.str.6:
-	db	" Drag: ", 0
-
-	section	.rodata,"a",@progbits
-	private	_.str.7
-_.str.7:
 	db	" Net: ", 0
 
 	section	.data,"aw",@progbits
@@ -1810,9 +1765,9 @@ _face_face:
 	section	.data,"aw",@progbits
 	public	_face_verts
 _face_verts:
-	dd	0x433e0000
+	dd	0x432a0000
 	dd	0x43160000
-	dd	0x43160000
+	dd	0x43020000
 	dd	0x42dc0000
 
 	section	.bss,"aw",@nobits
@@ -1853,15 +1808,12 @@ _face_data:
 	extern	_gfx_PrintInt
 	extern	_gfx_SetDraw
 	extern	__setflag
+	extern	__Unwind_SjLj_Unregister
 	extern	_gfx_FillScreen
 	extern	__llshru
-	extern	__Unwind_SjLj_Unregister
-	extern	__irems
 	extern	__fneg
-	extern	__ixor
 	extern	__lladd
 	extern	__fdiv
-	extern	__imulu
 	extern	_gfx_SetColor
 	extern	_sinf
 	extern	__ltof

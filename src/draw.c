@@ -14,9 +14,9 @@ void draw_object(obj_t* obj) {
 }
 
 void print_float(float in, int places) {
-    gfx_PrintInt(in, 1);
-    gfx_PrintString(".");
-    gfx_PrintInt(abs((int)(in * 10 * places) % (10 * places)), 1);
+    gfx_PrintInt(in * 10 * places, 1);
+    // gfx_PrintString(".");
+    // gfx_PrintInt(abs(((int)(in * 10 * places)) % (10 * places)), 1);
 }
 
 void draw_info(sim_state_t* state) {

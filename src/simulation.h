@@ -15,10 +15,10 @@
 typedef int face_t[2];
 
 typedef struct {
-    vec2_t* normals[8];// not actually normalized vectors because length
+    vec2_t* normals;// not actually normalized vectors because length
     
-    face_t** faces; // 8 max faces
-    vec2_t** verts;
+    face_t* faces; // 8 max faces
+    vec2_t* verts;
 
     int num_faces;
     int num_verts;

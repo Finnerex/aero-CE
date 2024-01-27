@@ -6,7 +6,7 @@
 void draw_object(obj_t* obj) {
 
     for (int i = 0; i < obj->num_faces; i++) {
-        vec2_t* verts[2] = {obj->verts[*obj->faces[i][0]], obj->verts[*obj->faces[i][1]]};
+        vec2_t* verts[2] = {&obj->verts[obj->faces[i][0]], &obj->verts[obj->faces[i][1]]};
         gfx_Line(verts[0]->x, verts[0]->y, verts[1]->x, verts[1]->y);
     }
 

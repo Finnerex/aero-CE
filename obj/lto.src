@@ -11,7 +11,7 @@ _draw_object:
 	pop	bc
 BB0_1:
 	ld	iy, (ix + 6)
-	ld	de, (iy + 30)
+	ld	de, (iy + 9)
 	ld	(ix - 3), hl
 	or	a, a
 	sbc	hl, de
@@ -20,20 +20,18 @@ BB0_1:
 	ld	hl, (ix + 6)
 	push	hl
 	pop	iy
-	ld	hl, (iy + 27)
+	ld	hl, (iy + 6)
 	ld	(ix - 9), hl
-	ld	hl, (iy + 24)
+	ld	hl, (iy + 3)
 	push	bc
 	pop	de
 	ld	(ix - 6), de
 	add	hl, de
-	ld	hl, (hl)
 	ld	(ix - 12), hl
 	ld	hl, (hl)
-	ld	de, 3
-	push	de
-	pop	bc
-	call	__imulu
+	ld	a, 3
+	ld	c, a
+	call	__ishl
 	push	hl
 	pop	bc
 	ld	de, (ix - 9)
@@ -42,9 +40,9 @@ BB0_1:
 	add	hl, bc
 	ld	(ix - 15), hl
 	ld	iy, (ix - 12)
-	ld	hl, (iy + 6)
-	ld	bc, 3
-	call	__imulu
+	ld	hl, (iy + 3)
+	ld	c, a
+	call	__ishl
 	push	hl
 	pop	bc
 	ex	de, hl
@@ -81,8 +79,8 @@ BB0_1:
 	pop	hl
 	ld	hl, (ix - 3)
 	inc	hl
+	ld	de, 6
 	ld	iy, (ix - 6)
-	ld	de, 3
 	add	iy, de
 	lea	bc, iy
 	jp	BB0_1
@@ -343,70 +341,85 @@ BB4_3:
 	section	.text,"ax",@progbits
 	public	_begin
 _begin:
-	ld	hl, -26
+	ld	hl, -48
 	call	__frameset
 	ld	iy, 2097152
 	ld	a, 65
 	ld	de, _square_data
-	ld	c, 61
-	ld	b, 63
-	or	a, a
-	sbc	hl, hl
+	ld	bc, 0
+	lea	hl, ix - 16
 	ld	(_sim_state), iy
 	ld	(_sim_state+3), a
-	ld	(ix - 11), de
+	ld	(ix - 27), de
 	ld	(_sim_state+28), de
 	ld	de, 5033165
 	ld	(_sim_state+24), de
-	ld	a, c
+	ld	a, 61
 	ld	(_sim_state+27), a
 	ld	de, -6501171
 	ld	(_sim_state+12), de
-	ld	a, b
+	ld	a, 63
 	ld	(_sim_state+15), a
+	ld	(ix - 39), hl
 	push	hl
-	pop	bc
+	pop	iy
+	lea	de, iy + 8
+	ld	(ix - 42), de
+	ld	(ix - 33), bc
+	ld	(ix - 30), bc
 BB5_1:
-	ld	iy, (ix - 11)
-	ld	de, (iy + 30)
-	ld	(ix - 14), hl
+	ld	iy, (ix - 27)
+	ld	de, (iy + 9)
+	push	bc
+	pop	hl
 	or	a, a
 	sbc	hl, de
 	call	pe, __setflag
 	jp	p, BB5_3
-	ld	iy, (ix - 11)
-	ld	hl, (iy + 27)
-	ld	(ix - 20), hl
-	ld	hl, (iy + 24)
-	ld	(ix - 17), bc
-	ld	bc, (ix - 17)
-	ld	(ix - 23), bc
-	add	hl, bc
-	ld	iy, (hl)
-	lea	hl, iy
-	ld	hl, (hl)
-	ld	bc, 3
-	call	__imulu
-	push	hl
-	pop	bc
-	ld	hl, (ix - 20)
-	add	hl, bc
-	ld	hl, (hl)
-	ld	(ix - 26), hl
+	ld	iy, (ix - 27)
 	ld	hl, (iy + 6)
-	ld	bc, 3
-	call	__imulu
-	push	hl
-	pop	bc
-	ld	hl, (ix - 20)
-	add	hl, bc
-	ld	hl, (hl)
-	ld	(ix - 20), hl
-	ld	de, (ix - 23)
-	ld	hl, (ix - 11)
+	ld	(ix - 36), hl
+	ld	hl, (iy + 3)
+	ld	de, (ix - 33)
 	add	hl, de
+	ld	(ix - 48), hl
 	ld	hl, (hl)
-	ld	(ix - 11), hl
+	ld	(ix - 45), bc
+	ld	c, 3
+	call	__ishl
+	push	hl
+	pop	de
+	ld	iy, (ix - 36)
+	add	iy, de
+	ld	hl, (iy)
+	ld	de, (iy + 3)
+	ld	iy, (iy + 6)
+	ld	(ix - 16), hl
+	ld	(ix - 13), de
+	push	iy
+	ex	(sp), hl
+	ld	(ix - 10), l
+	ld	(ix - 9), h
+	pop	hl
+	ld	iy, (ix - 48)
+	ld	hl, (iy + 3)
+	call	__ishl
+	push	hl
+	pop	de
+	ld	iy, (ix - 36)
+	add	iy, de
+	ld	hl, (iy)
+	ld	de, (iy + 3)
+	ld	bc, (iy + 6)
+	ld	(ix - 8), hl
+	ld	(ix - 5), de
+	ld	(ix - 2), c
+	ld	(ix - 1), b
+	ld	hl, (ix - 27)
+	ld	hl, (hl)
+	ld	de, (ix - 30)
+	add	hl, de
+	ld	(ix - 27), hl
 	push	hl
 	push	hl
 	push	hl
@@ -416,34 +429,38 @@ BB5_1:
 	ld	iy, 0
 	add	iy, sp
 	lea	de, iy
-	ld	hl, (ix - 26)
+	ld	hl, (ix - 39)
 	ld	bc, 8
 	ldir
 	lea	de, iy + 9
-	ld	hl, (ix - 20)
+	ld	hl, (ix - 42)
 	ld	bc, 8
 	ldir
-	pea	ix - 8
+	pea	ix - 24
 	call	_get_face_normal
 	ld	hl, 21
 	add	hl, sp
 	ld	sp, hl
-	ld	hl, (ix - 8)
-	ld	de, (ix - 5)
-	ld	bc, (ix - 2)
-	ld	iy, (ix - 11)
+	ld	hl, (ix - 24)
+	ld	de, (ix - 21)
+	ld	bc, (ix - 18)
+	ld	iy, (ix - 27)
 	ld	(iy), hl
 	ld	(iy + 3), de
 	ld	(iy + 6), c
 	ld	(iy + 7), b
-	ld	hl, (ix - 14)
-	inc	hl
-	ld	de, (_sim_state+28)
-	ld	(ix - 11), de
-	ld	iy, (ix - 17)
-	ld	bc, 3
-	add	iy, bc
-	lea	bc, iy
+	ld	bc, (ix - 45)
+	inc	bc
+	ld	hl, (_sim_state+28)
+	ld	(ix - 27), hl
+	ld	de, 6
+	ld	hl, (ix - 33)
+	add	hl, de
+	ld	(ix - 33), hl
+	ld	hl, (ix - 30)
+	ld	de, 8
+	add	hl, de
+	ld	(ix - 30), hl
 	jp	BB5_1
 BB5_3:
 	ld	sp, ix
@@ -655,6 +672,10 @@ _draw:
 	push	hl
 	call	_gfx_SetColor
 	pop	hl
+	ld	hl, 2
+	push	hl
+	call	_gfx_SetTextFGColor
+	pop	hl
 	ld	hl, (_sim_state+28)
 	push	hl
 	call	_draw_object
@@ -679,13 +700,13 @@ _end:
 	section	.text,"ax",@progbits
 	public	_calculate_net_force
 _calculate_net_force:
-	ld	hl, -31
+	ld	hl, -34
 	call	__frameset
 	ld	bc, (ix + 6)
 	ld	iy, (ix + 9)
 	ld	iy, (iy + 28)
-	ld	(ix - 7), iy
-	ld	de, (iy + 30)
+	ld	(ix - 11), iy
+	ld	de, (iy + 9)
 	push	bc
 	pop	iy
 	ld	hl, (iy)
@@ -693,38 +714,42 @@ _calculate_net_force:
 	ld	a, (iy + 3)
 	ld	(ix - 4), a
 	ld	hl, (iy + 4)
-	ld	(ix - 10), hl
+	ld	(ix - 7), hl
 	ld	a, (iy + 7)
-	ld	(ix - 11), a
-	ld	bc, 1
+	ld	(ix - 8), a
 	push	de
 	pop	hl
+	ld	bc, 1
 	or	a, a
 	sbc	hl, bc
-	ex	de, hl
+	dec	bc
 	call	pe, __setflag
 	jp	p, BB9_3
-	or	a, a
-	sbc	hl, hl
+	push	bc
+	pop	de
 	jp	BB9_3
 BB9_2:
-	ld	iy, (ix - 7)
-	ld	iy, (iy)
-	ld	bc, (iy)
-	ld	de, (iy + 4)
+	ld	hl, (ix - 11)
+	ld	iy, (hl)
+	ld	(ix - 14), de
+	push	bc
+	pop	de
 	ld	(ix - 17), de
-	ld	(ix - 14), hl
+	add	iy, de
+	ld	bc, (iy)
+	ld	hl, (iy + 4)
+	ld	(ix - 20), hl
 	ld	d, (iy + 7)
 	ld	a, (iy + 3)
 	ld	hl, -6039798
 	ld	e, 60
 	call	__fmul
-	ld	(ix - 20), bc
-	ld	(ix - 23), a
-	ld	bc, (ix - 17)
+	ld	(ix - 23), bc
+	ld	(ix - 26), a
+	ld	bc, (ix - 20)
 	ld	a, d
 	call	__fmul
-	ld	(ix - 17), bc
+	ld	(ix - 20), bc
 	ld	d, a
 	ld	hl, (ix + 9)
 	push	hl
@@ -741,29 +766,29 @@ BB9_2:
 	push	bc
 	pop	hl
 	ld	e, a
-	ld	bc, (ix - 20)
-	ld	a, (ix - 23)
+	ld	bc, (ix - 23)
+	ld	a, (ix - 26)
 	call	__fmul
-	ld	(ix - 23), bc
-	ld	(ix - 24), a
-	ld	bc, (ix - 17)
+	ld	(ix - 26), bc
+	ld	(ix - 27), a
+	ld	bc, (ix - 20)
 	ld	a, d
 	call	__fmul
-	ld	(ix - 17), bc
-	ld	(ix - 20), a
+	ld	(ix - 20), bc
+	ld	(ix - 23), a
 	ld	bc, (iy)
 	ld	a, (iy + 3)
 	lea	hl, iy
 	ld	de, (iy + 4)
-	ld	(ix - 31), de
+	ld	(ix - 34), de
 	ld	d, (iy + 7)
 	push	bc
 	pop	hl
 	ld	e, a
 	call	__fmul
-	ld	(ix - 27), bc
-	ld	(ix - 28), a
-	ld	bc, (ix - 31)
+	ld	(ix - 30), bc
+	ld	(ix - 31), a
+	ld	bc, (ix - 34)
 	ld	a, d
 	push	bc
 	pop	hl
@@ -772,48 +797,52 @@ BB9_2:
 	push	bc
 	pop	iy
 	ld	d, a
-	ld	bc, (ix - 23)
-	ld	a, (ix - 24)
-	ld	hl, (ix - 27)
-	ld	e, (ix - 28)
+	ld	bc, (ix - 26)
+	ld	a, (ix - 27)
+	ld	hl, (ix - 30)
+	ld	e, (ix - 31)
 	call	__fmul
-	ld	(ix - 23), bc
-	ld	(ix - 24), a
-	ld	bc, (ix - 17)
-	ld	a, (ix - 20)
+	ld	(ix - 26), bc
+	ld	(ix - 27), a
+	ld	bc, (ix - 20)
+	ld	a, (ix - 23)
 	lea	hl, iy
 	ld	e, d
 	call	__fmul
 	push	bc
 	pop	iy
-	ld	(ix - 17), a
+	ld	d, a
 	ld	bc, (ix - 3)
 	ld	a, (ix - 4)
-	ld	hl, (ix - 23)
-	ld	e, (ix - 24)
+	ld	hl, (ix - 26)
+	ld	e, (ix - 27)
 	call	__fadd
 	ld	(ix - 3), bc
 	ld	(ix - 4), a
-	ld	bc, (ix - 10)
-	ld	a, (ix - 11)
+	ld	bc, (ix - 7)
+	ld	a, (ix - 8)
 	lea	hl, iy
 	ld	iy, (ix + 6)
-	ld	e, (ix - 17)
+	ld	e, d
 	call	__fadd
-	ld	hl, (ix - 14)
-	ld	de, (ix - 3)
-	ld	(iy), de
-	ld	e, (ix - 4)
-	ld	(iy + 3), e
-	ld	(ix - 10), bc
+	ld	de, (ix - 14)
+	ld	hl, (ix - 3)
+	ld	(iy), hl
+	ld	l, (ix - 4)
+	ld	(iy + 3), l
+	ld	(ix - 7), bc
 	ld	(iy + 4), bc
-	ld	(ix - 11), a
+	ld	(ix - 8), a
 	ld	(iy + 7), a
-	dec	hl
-	ld	iy, (ix - 7)
-	lea	iy, iy + 3
-	ld	(ix - 7), iy
+	dec	de
+	ld	bc, 8
+	ld	hl, (ix - 17)
+	add	hl, bc
+	push	hl
+	pop	bc
 BB9_3:
+	push	de
+	pop	hl
 	add	hl, bc
 	or	a, a
 	sbc	hl, bc
@@ -1319,13 +1348,6 @@ _square_data:
 	dl	_square_verts
 	dl	4
 	dl	4
-	dl	0
-	dl	0
-	dl	0
-	dl	0
-	dl	0
-	dl	0
-	dl	0
 
 	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6c61664110f888c0285ae4c48b150c9a7a4361bb)"
 	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6c61664110f888c0285ae4c48b150c9a7a4361bb)"
@@ -1335,6 +1357,7 @@ _square_data:
 	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6c61664110f888c0285ae4c48b150c9a7a4361bb)"
 	extern	__Unwind_SjLj_Register
 	extern	__frameset
+	extern	_gfx_SetTextFGColor
 	extern	_gfx_Begin
 	extern	_gfx_Line
 	extern	__fadd
@@ -1344,6 +1367,7 @@ _square_data:
 	extern	__sand
 	extern	_gfx_PrintString
 	extern	_gfx_SwapDraw
+	extern	__ishl
 	extern	__fmul
 	extern	__ftol
 	extern	_gfx_PrintInt

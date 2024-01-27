@@ -70,6 +70,7 @@ void draw(void) {
     gfx_FillScreen(1);
 
     gfx_SetColor(2); // white
+    gfx_SetTextFGColor(2);
 
     draw_object(sim_state.object);
     draw_info(&sim_state);
@@ -86,9 +87,9 @@ void begin(void) {
     sim_state.air_density = INIT_AIR_DENSITY;
 
     for (int i = 0; i < sim_state.object->num_faces; i++) {
-        vec2_t* verts[2] = {sim_state.object->verts[*sim_state.object->faces[i][0]],
-                            sim_state.object->verts[*sim_state.object->faces[i][1]]}; 
-        *sim_state.object->normals[i] = get_face_normal(*verts[0], *verts[1]);
+        vec2_t verts[2] = {sim_state.object->verts[sim_state.object->faces[i][0]],
+                            sim_state.object->verts[sim_state.object->faces[i][1]]}; 
+        sim_state.object->normals[i] = get_face_normal(verts[0], verts[1]);
     }
 }
 

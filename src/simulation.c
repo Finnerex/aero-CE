@@ -9,7 +9,7 @@ vec2_t calculate_net_force(sim_state_t* sim_state) {
 
     for (int i = 0; i < sim_state->object->num_faces; i++) {
 
-        vec2_t normal = vec_MultiplyFloat(*sim_state->object->normals[i], (1.0f/PIXELS_PER_METER));
+        vec2_t normal = vec_MultiplyFloat(sim_state->object->normals[i], (1.0f/PIXELS_PER_METER));
         float var = (sim_state->air_density / 2) * sim_state->coef_drag;
         vec2_t face_force = vec_Multiply(vec_MultiplyFloat(normal, var), vec_Multiply(sim_state->wind_velocity, sim_state->wind_velocity));
         net_force = vec_Add(net_force, face_force);

@@ -82,8 +82,8 @@ void draw(void) {
 void begin(void) {
 
     sim_state.wind_velocity.x = INIT_WIND_SPEED;
-    sim_state.object = square;
-    sim_state.coef_drag = INIT_COEF_DRAG;
+    sim_state.object = face;
+    sim_state.coef_drag = 1;
     sim_state.air_density = INIT_AIR_DENSITY;
 
     for (int i = 0; i < sim_state.object->num_faces; i++) {

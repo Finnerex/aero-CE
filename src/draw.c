@@ -32,6 +32,8 @@ void draw_info(sim_state_t* state) {
     gfx_PrintInt(state->air_density, 2);
     gfx_PrintString("kg/m^3");
 
+    // gfx_Line(10, 10, )
+
 }
 
 void draw_forces(sim_state_t* state) {

@@ -7,4 +7,7 @@
 extern obj_t square_data;
 #define square &square_data
 
+extern obj_t face_data;
+#define face &face_data
+
 #endif

@@ -452,30 +452,32 @@ BB4_3:
 _begin:
 	ld	hl, -48
 	call	__frameset
-	ld	iy, 2097152
 	ld	a, 65
-	ld	de, _square_data
-	ld	bc, 0
-	lea	hl, ix - 16
+	ld	bc, _face_data
+	or	a, a
+	sbc	hl, hl
+	lea	de, ix - 16
+	ld	iy, 2097152
 	ld	(_sim_state), iy
 	ld	(_sim_state+3), a
-	ld	(ix - 27), de
-	ld	(_sim_state+28), de
-	ld	de, 5033165
-	ld	(_sim_state+24), de
-	ld	a, 61
-	ld	(_sim_state+27), a
-	ld	de, -6501171
-	ld	(_sim_state+12), de
+	ld	(ix - 27), bc
+	ld	(_sim_state+28), bc
+	ld	bc, -8388608
+	ld	(_sim_state+24), bc
 	ld	a, 63
+	ld	(_sim_state+27), a
+	ld	bc, -6501171
+	ld	(_sim_state+12), bc
 	ld	(_sim_state+15), a
-	ld	(ix - 39), hl
-	push	hl
+	ld	(ix - 39), de
+	push	de
 	pop	iy
 	lea	de, iy + 8
 	ld	(ix - 42), de
-	ld	(ix - 33), bc
-	ld	(ix - 30), bc
+	ld	(ix - 33), hl
+	ld	(ix - 30), hl
+	push	hl
+	pop	bc
 BB5_1:
 	ld	iy, (ix - 27)
 	ld	de, (iy + 9)
@@ -809,146 +811,139 @@ _end:
 	section	.text,"ax",@progbits
 	public	_calculate_net_force
 _calculate_net_force:
-	ld	hl, -34
+	ld	hl, -32
 	call	__frameset
-	ld	bc, (ix + 6)
+	ld	iy, (ix + 9)
+	ld	bc, (iy)
+	ld	a, (iy + 3)
+	lea	hl, iy
+	ld	de, (iy + 4)
+	ld	(ix - 3), de
+	ld	d, (iy + 7)
+	push	bc
+	pop	hl
+	ld	e, a
+	call	__fmul
+	ld	(ix - 9), bc
+	ld	(ix - 12), a
+	ld	bc, (ix - 3)
+	ld	a, d
+	push	bc
+	pop	hl
+	ld	e, d
+	call	__fmul
+	ld	(ix - 6), bc
+	ld	d, a
+	ld	iy, (ix + 9)
+	ld	bc, (iy + 12)
+	ld	a, (iy + 15)
+	or	a, a
+	sbc	hl, hl
+	ld	(ix - 3), hl
+	ld	e, 63
+	call	__fmul
+	push	bc
+	pop	hl
+	ld	e, a
+	ld	bc, (ix - 9)
+	ld	a, (ix - 12)
+	call	__fmul
+	ld	(ix - 16), bc
+	ld	(ix - 17), a
+	ld	bc, (ix - 6)
+	ld	a, d
+	call	__fmul
+	ld	(ix - 20), bc
+	ld	(ix - 21), a
 	ld	iy, (ix + 9)
 	ld	iy, (iy + 28)
-	ld	(ix - 11), iy
+	ld	(ix - 24), iy
 	ld	de, (iy + 9)
-	push	bc
-	pop	iy
+	ld	iy, (ix + 6)
 	ld	hl, (iy)
-	ld	(ix - 3), hl
+	ld	(ix - 6), hl
 	ld	a, (iy + 3)
-	ld	(ix - 4), a
+	ld	(ix - 9), a
 	ld	hl, (iy + 4)
-	ld	(ix - 7), hl
+	ld	(ix - 12), hl
 	ld	a, (iy + 7)
-	ld	(ix - 8), a
+	ld	(ix - 13), a
+	ld	bc, 1
 	push	de
 	pop	hl
-	ld	bc, 1
 	or	a, a
 	sbc	hl, bc
-	dec	bc
 	call	pe, __setflag
 	jp	p, BB9_3
-	push	bc
-	pop	de
+	ld	de, 0
 	jp	BB9_3
 BB9_2:
-	ld	hl, (ix - 11)
+	ld	hl, (ix - 24)
+	ld	(ix - 27), de
 	ld	iy, (hl)
-	ld	(ix - 14), de
-	push	bc
-	pop	de
-	ld	(ix - 17), de
+	ld	de, (ix - 3)
 	add	iy, de
 	ld	bc, (iy)
 	ld	hl, (iy + 4)
-	ld	(ix - 20), hl
+	ld	(ix - 30), hl
 	ld	d, (iy + 7)
 	ld	a, (iy + 3)
 	ld	hl, -6039798
 	ld	e, 60
 	call	__fmul
-	ld	(ix - 23), bc
-	ld	(ix - 26), a
-	ld	bc, (ix - 20)
-	ld	a, d
-	call	__fmul
-	ld	(ix - 20), bc
-	ld	d, a
-	ld	hl, (ix + 9)
-	push	hl
+	push	bc
 	pop	iy
-	ld	bc, (iy + 12)
-	ld	a, (iy + 15)
-	or	a, a
-	sbc	hl, hl
-	ld	e, 63
-	call	__fmul
-	ld	hl, (iy + 24)
-	ld	e, (iy + 27)
-	call	__fmul
-	push	bc
-	pop	hl
-	ld	e, a
-	ld	bc, (ix - 23)
-	ld	a, (ix - 26)
-	call	__fmul
-	ld	(ix - 26), bc
-	ld	(ix - 27), a
-	ld	bc, (ix - 20)
+	ld	(ix - 31), a
+	ld	bc, (ix - 30)
 	ld	a, d
 	call	__fmul
-	ld	(ix - 20), bc
-	ld	(ix - 23), a
-	ld	bc, (iy)
-	ld	a, (iy + 3)
+	ld	(ix - 30), bc
+	ld	d, a
+	ld	bc, (ix - 16)
+	ld	a, (ix - 17)
 	lea	hl, iy
-	ld	de, (iy + 4)
-	ld	(ix - 34), de
-	ld	d, (iy + 7)
+	ld	e, (ix - 31)
+	call	__fmul
 	push	bc
-	pop	hl
-	ld	e, a
+	pop	iy
+	ld	(ix - 32), a
+	ld	bc, (ix - 20)
+	ld	a, (ix - 21)
+	ld	hl, (ix - 30)
+	ld	e, d
 	call	__fmul
 	ld	(ix - 30), bc
 	ld	(ix - 31), a
-	ld	bc, (ix - 34)
-	ld	a, d
-	push	bc
-	pop	hl
-	ld	e, d
-	call	__fmul
+	ld	bc, (ix - 6)
+	ld	a, (ix - 9)
+	lea	hl, iy
+	ld	e, (ix - 32)
+	call	__fadd
 	push	bc
 	pop	iy
 	ld	d, a
-	ld	bc, (ix - 26)
-	ld	a, (ix - 27)
+	ld	bc, (ix - 12)
+	ld	a, (ix - 13)
 	ld	hl, (ix - 30)
 	ld	e, (ix - 31)
-	call	__fmul
-	ld	(ix - 26), bc
-	ld	(ix - 27), a
-	ld	bc, (ix - 20)
-	ld	a, (ix - 23)
-	lea	hl, iy
-	ld	e, d
-	call	__fmul
-	push	bc
+	call	__fadd
+	ld	(ix - 6), iy
+	ld	hl, (ix + 6)
+	ld	(hl), iy
+	ld	(ix - 9), d
+	push	hl
 	pop	iy
-	ld	d, a
-	ld	bc, (ix - 3)
-	ld	a, (ix - 4)
-	ld	hl, (ix - 26)
-	ld	e, (ix - 27)
-	call	__fadd
-	ld	(ix - 3), bc
-	ld	(ix - 4), a
-	ld	bc, (ix - 7)
-	ld	a, (ix - 8)
-	lea	hl, iy
-	ld	iy, (ix + 6)
-	ld	e, d
-	call	__fadd
-	ld	de, (ix - 14)
-	ld	hl, (ix - 3)
-	ld	(iy), hl
-	ld	l, (ix - 4)
-	ld	(iy + 3), l
-	ld	(ix - 7), bc
+	ld	(iy + 3), d
+	ld	(ix - 12), bc
 	ld	(iy + 4), bc
-	ld	(ix - 8), a
+	ld	(ix - 13), a
 	ld	(iy + 7), a
+	ld	de, (ix - 27)
 	dec	de
 	ld	bc, 8
-	ld	hl, (ix - 17)
+	ld	hl, (ix - 3)
 	add	hl, bc
-	push	hl
-	pop	bc
+	ld	(ix - 3), hl
 BB9_3:
 	push	de
 	pop	hl
@@ -1460,8 +1455,6 @@ _sim_state:
 _square_faces:
 	dl	0
 	dl	1
-	dl	1
-	dl	2
 	dl	2
 	dl	3
 	dl	3
@@ -1490,8 +1483,36 @@ _square_data:
 	dl	_square_norms
 	dl	_square_faces
 	dl	_square_verts
+	dl	3
 	dl	4
-	dl	4
+
+	section	.data,"aw",@progbits
+	public	_face_face
+_face_face:
+	dl	0
+	dl	1
+
+	section	.data,"aw",@progbits
+	public	_face_verts
+_face_verts:
+	dd	0x43340000
+	dd	0x430c0000
+	dd	0x430c0000
+	dd	0x42c80000
+
+	section	.bss,"aw",@nobits
+	public	_face_norms
+_face_norms:
+	rb	8
+
+	section	.data,"aw",@progbits
+	public	_face_data
+_face_data:
+	dl	_face_norms
+	dl	_face_face
+	dl	_face_verts
+	dl	1
+	dl	2
 
 	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6c61664110f888c0285ae4c48b150c9a7a4361bb)"
 	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6c61664110f888c0285ae4c48b150c9a7a4361bb)"

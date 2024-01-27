@@ -5,7 +5,6 @@
 
 #define PIXELS_PER_METER 50.0f
 #define INIT_WIND_SPEED 10.0f
-#define INIT_COEF_DRAG 0.05f
 #define INIT_AIR_DENSITY 1.225f
 
 #define CENTER_X (GFX_LCD_WIDTH / 2)

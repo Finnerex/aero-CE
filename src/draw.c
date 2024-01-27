@@ -27,7 +27,7 @@ void draw_info(sim_state_t* state) {
     print_float(state->wind_speed, 1);
     gfx_PrintString("m/s");
     
-    gfx_SetTextXY(GFX_LCD_WIDTH, GFX_LCD_HEIGHT - INFO_SECT_HEIGHT / 2);
+    gfx_SetTextXY(CENTER_X, GFX_LCD_HEIGHT - INFO_SECT_HEIGHT / 2);
     gfx_PrintString("\tAir Density: ");
     gfx_PrintInt(state->air_density, 2);
     gfx_PrintString("kg/m^3");
@@ -36,7 +36,10 @@ void draw_info(sim_state_t* state) {
 
 void draw_forces(sim_state_t* state) {
     
+    gfx_SetColor(5);
     gfx_Line(CENTER_X, CENTER_Y, CENTER_X, CENTER_Y + state->net_force.y); // lift arrow body
+    gfx_SetColor(3);
     gfx_Line(CENTER_X, CENTER_Y, CENTER_X + state->net_force.x, CENTER_Y); // drag arrow body
+    gfx_SetColor(4);
     gfx_Line(CENTER_X, CENTER_Y, CENTER_X + state->net_force.x, CENTER_Y + state->net_force.y); // net force arrow body
 }

@@ -200,7 +200,7 @@ _draw_info:
 	pop	hl
 	ld	hl, 230
 	push	hl
-	ld	hl, 320
+	ld	hl, 160
 	push	hl
 	call	_gfx_SetTextXY
 	pop	hl
@@ -231,16 +231,20 @@ _draw_info:
 _draw_forces:
 	ld	hl, -3
 	call	__frameset
+	ld	hl, 5
+	push	hl
+	call	_gfx_SetColor
+	pop	hl
 	ld	iy, (ix + 6)
-	ld	hl, -1048576
-	lea	bc, iy + 16
-	ld	(ix - 3), bc
-	lea	de, iy + 20
+	lea	hl, iy + 16
+	ld	(ix - 3), hl
+	lea	hl, iy + 20
 	ld	bc, (iy + 20)
-	push	de
+	push	hl
 	pop	iy
-	lea	iy, iy + 3
-	ld	a, (iy)
+	lea	hl, iy + 3
+	ld	a, (hl)
+	ld	hl, -1048576
 	ld	e, 66
 	call	__fadd
 	call	__ftol
@@ -254,6 +258,10 @@ _draw_forces:
 	pop	hl
 	pop	hl
 	pop	hl
+	pop	hl
+	ld	hl, 3
+	push	hl
+	call	_gfx_SetColor
 	pop	hl
 	ld	iy, (ix + 6)
 	ld	bc, (iy + 16)
@@ -274,6 +282,10 @@ _draw_forces:
 	pop	hl
 	pop	hl
 	pop	hl
+	pop	hl
+	ld	hl, 4
+	push	hl
+	call	_gfx_SetColor
 	pop	hl
 	ld	iy, (ix + 6)
 	ld	bc, (iy + 16)

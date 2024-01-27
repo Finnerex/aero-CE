@@ -28,8 +28,8 @@ float vec_Magnitude(vec2_t vec) {
 }
 
 void vec_Rotate(vec2_t* vec, float degrees) {
-    float new_x = cosf(vec->x * degrees) - sinf(vec->y * degrees);
-    vec->y = sinf(vec->x * degrees) -  cosf(vec->y * degrees);
+    float new_x = vec->x + (cosf(vec->x * degrees) - sinf(vec->y * degrees));
+    vec->y = vec->y + (sinf(vec->x * degrees) -  cosf(vec->y * degrees));
     vec->x = new_x;
 }
 
@@ -45,9 +45,9 @@ vec2_t get_face_normal(vec2_t vert1, vec2_t vert2) { // normal * length
     norm_vert2.y = vert1.y;
 
     if (vert1.x < vert2.x)
-        normal_vec = vec_Subtract(norm_vert1, norm_vert2);
-    else
         normal_vec = vec_Subtract(norm_vert2, norm_vert1);
+    else
+        normal_vec = vec_Subtract(norm_vert1, norm_vert2);
 
     return normal_vec;
 }

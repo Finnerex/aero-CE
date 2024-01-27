@@ -26,6 +26,7 @@ typedef struct {
 typedef struct {
     vec2_t wind_velocity; // this is in meters though
     float wind_speed;
+    float wind_direction;
 
     float air_density;
     vec2_t net_force;

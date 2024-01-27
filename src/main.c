@@ -8,6 +8,8 @@
 #include "vector.h"
 #include "gfx/gfx.h"
 
+#define PI 3.1415926535
+
 void begin(void);
 void end(void);
 bool step(void);
@@ -44,19 +46,21 @@ bool step(void) {
 
 
     if (kb_Data[7] & kb_Up)
-        vec_Rotate(&sim_state.wind_velocity, 2);
+        sim_state.wind_velocity = vec_Rotate(sim_state.wind_velocity, 0.05f);
     else if (kb_Data[7] & kb_Down)
-        vec_Rotate(&sim_state.wind_velocity, -2);
+        sim_state.wind_velocity = vec_Rotate(sim_state.wind_velocity, 0.05f);
+
+        
 
     if (kb_Data[7] & kb_Right)
-        sim_state.wind_velocity = vec_AddLength(sim_state.wind_velocity, 0.1);
+        sim_state.wind_velocity = vec_AddLength(sim_state.wind_velocity, 0.1f);
     else if (kb_Data[7] & kb_Left)
-        sim_state.wind_velocity = vec_AddLength(sim_state.wind_velocity, -0.1);
+        sim_state.wind_velocity = vec_AddLength(sim_state.wind_velocity, -0.1f);
 
     if (kb_Data[1] & kb_Del)
-        sim_state.air_density += 0.1;
+        sim_state.air_density += 0.1f;
     else if (kb_Data[1] & kb_Del)
-        sim_state.air_density -= 0.1;
+        sim_state.air_density -= 0.1f;
 
 
     update_sim_state(&sim_state);
@@ -83,7 +87,6 @@ void begin(void) {
 
     sim_state.wind_velocity.x = INIT_WIND_SPEED;
     sim_state.object = face;
-    sim_state.coef_drag = 1;
     sim_state.air_density = INIT_AIR_DENSITY;
 
     for (int i = 0; i < sim_state.object->num_faces; i++) {

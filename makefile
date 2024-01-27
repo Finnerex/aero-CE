@@ -2,9 +2,9 @@
 # Makefile Options
 # ----------------------------
 
-NAME = DEMO
+NAME = AERO
 ICON = icon.png
-DESCRIPTION = "CE C Toolchain Demo"
+DESCRIPTION = "wind tunnel simulation"
 COMPRESSED = NO
 
 CFLAGS = -Wall -Wextra -Oz

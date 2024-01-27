@@ -421,7 +421,7 @@ _main:
 	or	a, a
 	sbc	hl, hl
 	push	hl
-	ld	hl, 6
+	ld	hl, 12
 	push	hl
 	ld	hl, _global_palette
 	push	hl
@@ -1448,7 +1448,7 @@ _.str.7:
 	section	.data,"aw",@progbits
 	public	_global_palette
 _global_palette:
-	db	"Œå", 0, 0, "ÿÿ"
+	db	"Œå", 0, 0, "ÿÿ", 0, "|àƒ", 0
 
 	section	.bss,"aw",@nobits
 	public	_sim_state

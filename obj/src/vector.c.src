@@ -5,8 +5,8 @@
 _vec_Multiply:
 	private	func_begin0
 func_begin0:
-	file	0 "C:\CEdev\projects\aero-CE" "src\vector.c" md5 0xd3240a9443a88153103236e883bf08a9
-	file	1 "src" "vector.c" md5 0xd3240a9443a88153103236e883bf08a9
+	file	0 "C:\CEdev\projects\aero-CE" "src\vector.c" md5 0xe1219c14c8fb7ff082d80555762fc8cc
+	file	1 "src" "vector.c" md5 0xe1219c14c8fb7ff082d80555762fc8cc
 	loc	1 6 0
 	cfi_sections .debug_frame
 	cfi_startproc
@@ -325,7 +325,7 @@ tmp33:
 	private	func_end4
 func_end4:
 	cfi_endproc
-	file	2 "src" "vector.h" md5 0x80477f840ec6f117464b6e8fdeaf1dc1
+	file	2 "src" "vector.h" md5 0xe51c530473f97e9b2ea5ea9e6dbadc80
 
 	section	.text,"ax",@progbits
 	public	_vec_Magnitude
@@ -1421,6 +1421,171 @@ tmp156:
 func_end12:
 	cfi_endproc
 
+	section	.text,"ax",@progbits
+	public	_angle_between_vecs
+_angle_between_vecs:
+	private	func_begin13
+func_begin13:
+	loc	1 96 0
+	cfi_startproc
+	ld	hl, -13
+	call	__frameset
+	private	tmp157
+tmp157:
+	cfi_def_cfa ix, 6
+	cfi_offset ix, -6
+	loc	1 56 17 prologue_end
+	ld	a, (ix + 9)
+	ld	(ix - 4), a
+	loc	1 56 26 is_stmt 0
+	ld	a, (ix + 18)
+	ld	(ix - 1), a
+	loc	1 56 35
+	ld	iy, (ix + 10)
+	ld	d, (ix + 13)
+	loc	1 56 44
+	ld	hl, (ix + 19)
+	ld	(ix - 11), hl
+	ld	e, (ix + 22)
+	loc	1 56 37
+	ld	(ix - 12), e
+	lea	bc, iy
+	ld	a, d
+	call	__fmul
+	private	tmp158
+tmp158:
+	ld	(ix - 7), bc
+	ld	(ix - 8), a
+	loc	1 56 28
+	ld	bc, (ix + 6)
+	ld	a, (ix - 4)
+	ld	hl, (ix + 15)
+	ld	e, (ix - 1)
+	call	__fmul
+	private	tmp159
+tmp159:
+	ld	hl, (ix - 7)
+	ld	e, (ix - 8)
+	call	__fadd
+	private	tmp160
+tmp160:
+	ld	(ix - 7), bc
+	ld	(ix - 8), a
+	private	tmp161
+tmp161:
+	loc	1 37 40 is_stmt 1
+	lea	bc, iy
+	ld	a, d
+	lea	hl, iy
+	ld	e, d
+	call	__fmul
+	private	tmp162
+tmp162:
+	push	bc
+	pop	iy
+	ld	d, a
+	ld	bc, (ix + 6)
+	ld	a, (ix - 4)
+	loc	1 37 32 is_stmt 0
+	push	bc
+	pop	hl
+	ld	e, a
+	call	__fmul
+	private	tmp163
+tmp163:
+	lea	hl, iy
+	ld	e, d
+	call	__fadd
+	private	tmp164
+tmp164:
+	ld	l, a
+	loc	1 37 12
+	push	hl
+	push	bc
+	call	_sqrtf
+	private	tmp165
+tmp165:
+	ld	(ix - 4), hl
+	ld	(ix - 13), e
+	pop	hl
+	pop	hl
+	private	tmp166
+tmp166:
+	loc	1 0 12
+	ld	bc, (ix - 11)
+	ld	a, (ix - 12)
+	private	tmp167
+tmp167:
+	loc	1 37 40
+	push	bc
+	pop	hl
+	ld	e, a
+	call	__fmul
+	private	tmp168
+tmp168:
+	push	bc
+	pop	iy
+	ld	d, a
+	ld	bc, (ix + 15)
+	ld	a, (ix - 1)
+	loc	1 37 32
+	push	bc
+	pop	hl
+	ld	e, a
+	call	__fmul
+	private	tmp169
+tmp169:
+	lea	hl, iy
+	ld	e, d
+	call	__fadd
+	private	tmp170
+tmp170:
+	ld	l, a
+	loc	1 37 12
+	push	hl
+	push	bc
+	call	_sqrtf
+	private	tmp171
+tmp171:
+	pop	bc
+	pop	bc
+	private	tmp172
+tmp172:
+	loc	1 97 61 is_stmt 1
+	ld	bc, (ix - 4)
+	ld	a, (ix - 13)
+	call	__fmul
+	private	tmp173
+tmp173:
+	push	bc
+	pop	hl
+	ld	e, a
+	loc	1 97 38 is_stmt 0
+	ld	bc, (ix - 7)
+	ld	a, (ix - 8)
+	call	__fdiv
+	private	tmp174
+tmp174:
+	ld	l, a
+	loc	1 97 12
+	push	hl
+	push	bc
+	call	_acosf
+	private	tmp175
+tmp175:
+	loc	1 97 5
+	ld	sp, ix
+	pop	ix
+	cfi_def_cfa sp, 3
+	cfi_restore ix
+	ret
+	private	tmp176
+tmp176:
+	section	.text,"ax",@progbits
+	private	func_end13
+func_end13:
+	cfi_endproc
+
 	section	.debug_loclists,"",@progbits
 	dd	debug_list_header_end0-debug_list_header_start0
 	private	debug_list_header_start0
@@ -1752,7 +1917,7 @@ debug_info_start0:
 	dd	line_table_start0
 	db	2
 	db	0
-	dd	func_end12-func_begin0
+	dd	func_end13-func_begin0
 	dd	addr_table_base0
 	dd	loclists_table_base0
 	db	2
@@ -1872,17 +2037,17 @@ debug_info_start0:
 	db	26
 	dd	161
 	db	3
-	db	24
+	db	25
 	db	1
 	db	26
 	dd	157
 	db	11
-	db	25
+	db	26
 	db	1
 	db	27
 	dd	157
 	db	11
-	db	26
+	db	27
 	db	1
 	db	28
 	dd	157
@@ -1944,7 +2109,7 @@ debug_info_start0:
 	db	44
 	dd	161
 	db	3
-	db	27
+	db	28
 	db	1
 	db	44
 	dd	157
@@ -1977,7 +2142,7 @@ debug_info_start0:
 	db	50
 	dd	161
 	db	11
-	db	28
+	db	29
 	db	1
 	db	51
 	dd	157
@@ -2182,67 +2347,67 @@ debug_info_start0:
 
 	db	13
 	db	0
-	db	29
-	db	1
-	db	64
-	dd	161
-	db	3
 	db	30
 	db	1
 	db	64
 	dd	161
-	db	11
+	db	3
 	db	31
 	db	1
-	db	66
+	db	64
 	dd	161
 	db	11
 	db	32
 	db	1
-	db	67
+	db	66
 	dd	161
 	db	11
 	db	33
 	db	1
-	db	68
+	db	67
 	dd	161
 	db	11
 	db	34
 	db	1
-	db	69
+	db	68
 	dd	161
 	db	11
 	db	35
 	db	1
-	db	76
+	db	69
 	dd	161
 	db	11
 	db	36
 	db	1
-	db	78
+	db	76
 	dd	161
 	db	11
 	db	37
 	db	1
-	db	81
+	db	78
 	dd	161
 	db	11
 	db	38
 	db	1
-	db	83
+	db	81
 	dd	161
 	db	11
 	db	39
 	db	1
-	db	85
+	db	83
 	dd	161
 	db	11
 	db	40
 	db	1
+	db	85
+	dd	161
+	db	11
+	db	41
+	db	1
 	db	87
 	dd	157
 	db	11
-	db	41
+	db	42
 	db	1
 	db	88
 	dd	157
@@ -2336,11 +2501,55 @@ debug_info_start0:
 	db	88
 	db	35
 	db	0
+	db	2
+	db	31
+	dd	func_end13-func_begin13
+	db	1
+	db	84
+
+	db	24
+	db	1
+	db	96
+
+	dd	157
+
+	db	3
+	db	10
+	db	1
+	db	96
+	dd	161
+	db	3
+	db	11
+	db	1
+	db	96
+	dd	161
+	db	12
+	dd	428
+	db	32
+	dd	tmp161-tmp157
+	db	1
+	db	97
+	db	18
+	db	12
+	dd	140
+	db	33
+	dd	tmp167-tmp161
+	db	1
+	db	97
+	db	41
+	db	12
+	dd	140
+	db	34
+	dd	tmp172-tmp167
+	db	1
+	db	97
+	db	63
+	db	0
 	db	0
 	private	debug_info_end0
 debug_info_end0:
 	section	.debug_str_offsets,"",@progbits
-	dd	172
+	dd	176
 	dw	5
 	dw	0
 	private	str_offsets_base0
@@ -2420,57 +2629,60 @@ info_string23:
 	db	"get_face_normal", 0
 	private	info_string24
 info_string24:
-	db	"add", 0
+	db	"angle_between_vecs", 0
 	private	info_string25
 info_string25:
-	db	"length", 0
+	db	"add", 0
 	private	info_string26
 info_string26:
-	db	"ratio", 0
+	db	"length", 0
 	private	info_string27
 info_string27:
-	db	"radians", 0
+	db	"ratio", 0
 	private	info_string28
 info_string28:
-	db	"magnitude", 0
+	db	"radians", 0
 	private	info_string29
 info_string29:
-	db	"vert1", 0
+	db	"magnitude", 0
 	private	info_string30
 info_string30:
-	db	"vert2", 0
+	db	"vert1", 0
 	private	info_string31
 info_string31:
-	db	"normal_vec", 0
+	db	"vert2", 0
 	private	info_string32
 info_string32:
-	db	"normal_vec2", 0
+	db	"normal_vec", 0
 	private	info_string33
 info_string33:
-	db	"norm_vert1", 0
+	db	"normal_vec2", 0
 	private	info_string34
 info_string34:
-	db	"norm_vert2", 0
+	db	"norm_vert1", 0
 	private	info_string35
 info_string35:
-	db	"subtracter", 0
+	db	"norm_vert2", 0
 	private	info_string36
 info_string36:
-	db	"middle_of_face", 0
+	db	"subtracter", 0
 	private	info_string37
 info_string37:
-	db	"vec_check", 0
+	db	"middle_of_face", 0
 	private	info_string38
 info_string38:
-	db	"vec_check2", 0
+	db	"vec_check", 0
 	private	info_string39
 info_string39:
-	db	"center_vec", 0
+	db	"vec_check2", 0
 	private	info_string40
 info_string40:
-	db	"distance_from_center", 0
+	db	"center_vec", 0
 	private	info_string41
 info_string41:
+	db	"distance_from_center", 0
+	private	info_string42
+info_string42:
 	db	"distance_from_center2", 0
 	section	.debug_str_offsets,"",@progbits
 	dd	info_string0
@@ -2515,6 +2727,7 @@ info_string41:
 	dd	info_string39
 	dd	info_string40
 	dd	info_string41
+	dd	info_string42
 	section	.debug_addr,"",@progbits
 	dd	debug_addr_end0-debug_addr_start0
 	private	debug_addr_start0
@@ -2555,12 +2768,17 @@ addr_table_base0:
 	dl	tmp137
 	dl	tmp142
 	dl	tmp144
+	dl	func_begin13
+	dl	tmp157
+	dl	tmp161
+	dl	tmp167
 	private	debug_addr_end0
 debug_addr_end0:
 	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6c61664110f888c0285ae4c48b150c9a7a4361bb)"
 	section	.debug_line,"",@progbits
 line_table_start0:
 	extern	__Unwind_SjLj_Register
+	extern	_acosf
 	extern	__Unwind_SjLj_Unregister
 	extern	__frameset
 	extern	__llshru

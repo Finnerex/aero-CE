@@ -92,3 +92,7 @@ vec2_t get_face_normal(vec2_t vert1, vec2_t vert2) { // normal * length
 
     return normal_vec2;
 }
+
+float angle_between_vecs(vec2_t vec1, vec2_t vec2){
+    return acosf(vec_Dot(vec1, vec2) / (vec_Magnitude(vec1) * vec_Magnitude(vec2)));
+}

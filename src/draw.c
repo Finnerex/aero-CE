@@ -74,14 +74,16 @@ void draw_info(sim_state_t* state) {
     print_float(state->air_density, 2);
     gfx_PrintString("kg/m^3");
 
-    vec2_t wind_dir = vec_MultiplyFloat(vec_Normalize(state->wind_velocity), 4);
-    gfx_Line(10, 10, 30 + wind_dir.x, 30 + wind_dir.y);
-
     gfx_SetTextXY(10, 20);
     gfx_PrintString("Air speed - x: ");
     print_float(state->wind_velocity.x, 1);
     gfx_PrintString(" y: ");
     print_float(state->wind_velocity.y, 1);
+
+    vec2_t wind_dir = vec_MultiplyFloat(vec_Normalize(state->wind_velocity), 10);
+    gfx_Line(30, 30, 30 + wind_dir.x, 30 + wind_dir.y);
+    gfx_SetColor(3);
+    gfx_Rectangle(30 + wind_dir.x, 30 + wind_dir.y, 2, 2);
 
 }
 

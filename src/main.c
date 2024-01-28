@@ -36,11 +36,11 @@ int main() {
 sim_state_t sim_state;
 
 #define NUM_OBJS 4
-int selected_object = 0;
+int selected_object = 2;
 obj_t* objects[NUM_OBJS] = { tringle, face, square, diamond };
 
 bool step(void) {
-    
+
     kb_Scan();
     
     if (kb_Data[6] & kb_Clear)
@@ -61,22 +61,25 @@ bool step(void) {
 
     if (kb_Data[1] & kb_Del)
         sim_state.air_density += 0.1f;
-    else if (kb_Data[1] & kb_Del)
+    else if (kb_Data[4] & kb_Stat)
         sim_state.air_density -= 0.1f;
 
     
-    // if (kb_Data[1] & kb_2nd) {
-    //     selected_object += selected_object + 1 >= NUM_OBJS ? 0 : 1;
-    //     sim_state.object = objects[selected_object];
-    // } else if (kb_Data[2] & kb_Alpha) {
-    //     selected_object -= selected_object - 1 < 0 ? 0 : 1;
-    //     sim_state.object = objects[selected_object];
-    // }
+    static bool second, last_second, alpha, last_alpha;
+    second = kb_Data[1] & kb_2nd;
+    alpha = kb_Data[2] & kb_Alpha;
+
+    if (second && !last_second)
+        selected_object += selected_object + 1 >= NUM_OBJS ? 0 : 1;
+    else if (alpha && !last_alpha) 
+        selected_object -= selected_object - 1 < 0 ? 0 : 1;
+
+    last_second = second;
+    last_alpha = alpha;
 
 
-    update_sim_state(&sim_state);
-
-
+    update_sim_state(&sim_state, objects[selected_object]);
+    
     return true;
 }
 
@@ -87,10 +90,10 @@ void draw(void) {
     gfx_SetColor(2); // white
     gfx_SetTextFGColor(2);
 
-    draw_object(sim_state.object);
+    draw_object(objects[selected_object]);
     draw_info(&sim_state);
     draw_forces(&sim_state);
-    draw_norms(sim_state.object);
+    // draw_norms(objects[selected_object]);
 
 }
 
@@ -98,13 +101,16 @@ void draw(void) {
 void begin(void) {
 
     sim_state.wind_velocity.x = INIT_WIND_SPEED;
-    sim_state.object = tringle;
     sim_state.air_density = INIT_AIR_DENSITY;
 
-    for (int i = 0; i < sim_state.object->num_faces; i++) {
-        vec2_t verts[2] = {sim_state.object->verts[sim_state.object->faces[i][0]],
-                           sim_state.object->verts[sim_state.object->faces[i][1]]}; 
-        sim_state.object->normals[i] = get_face_normal(verts[0], verts[1]);
+    for (int j = 0; j < NUM_OBJS; j++) {
+        obj_t* object = objects[j];
+
+        for (int i = 0; i < object->num_faces; i++) {
+            vec2_t verts[2] = {object->verts[object->faces[i][0]],
+                                object->verts[object->faces[i][1]]}; 
+            object->normals[i] = get_face_normal(verts[0], verts[1]);
+        }
     }
 }
 

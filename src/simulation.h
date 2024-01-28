@@ -30,12 +30,14 @@ typedef struct {
     float air_density;
     vec2_t net_force;
     float coef_drag;
-
-    obj_t* object;
     
 } sim_state_t;
 
-vec2_t calculate_net_force(sim_state_t sim_state);
-void update_sim_state(sim_state_t* sim_state);
+vec2_t calculate_net_force(sim_state_t sim_state, obj_t* object);
+void update_sim_state(sim_state_t* sim_state, obj_t* object);
+
+static inline int sign(float in) {
+    return (in > 0) - (in < 0);
+}
 
 #endif

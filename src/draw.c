@@ -78,10 +78,17 @@ void draw_info(sim_state_t* state) {
 
     vec2_t wind_dir = vec_MultiplyFloat(vec_Normalize(state->wind_velocity), 10);
     gfx_SetColor(6);
-    gfx_Line(5 - wind_dir.x, CENTER_Y - wind_dir.y, 5 + wind_dir.x, CENTER_Y + wind_dir.y);
-    gfx_Rectangle(30 + wind_dir.x, 30 + wind_dir.y, 2, 2);
-    gfx_Line(5 - wind_dir.x, CENTER_Y - wind_dir.y, 5 + wind_dir.x, CENTER_Y + wind_dir.y);
-
+    gfx_Line(15 - wind_dir.x, CENTER_Y - wind_dir.y, 15 + wind_dir.x, CENTER_Y + wind_dir.y);
+    gfx_SetColor(3);
+    gfx_Rectangle(15 + wind_dir.x, CENTER_Y + wind_dir.y, 2, 1);
+    gfx_SetColor(6);
+    gfx_Line(CENTER_X - wind_dir.x, 15 - wind_dir.y, CENTER_X + wind_dir.x, 15 + wind_dir.y);
+    gfx_SetColor(3);
+    gfx_Rectangle(CENTER_X + wind_dir.x, 15 + wind_dir.y, 2, 1);
+    gfx_SetColor(6);
+    gfx_Line((GFX_LCD_WIDTH - 15) - wind_dir.x, CENTER_Y - wind_dir.y, (GFX_LCD_WIDTH - 15) + wind_dir.x, CENTER_Y + wind_dir.y);
+    gfx_SetColor(3);
+    gfx_Rectangle((GFX_LCD_WIDTH -15) + wind_dir.x, CENTER_Y + wind_dir.y, 2, 1);
 }
 
 void draw_forces(sim_state_t* state) {
@@ -99,13 +106,13 @@ void draw_forces(sim_state_t* state) {
     gfx_SetColor(3);
     gfx_Line(CENTER_X, CENTER_Y, CENTER_X + state->net_force.x, CENTER_Y); // drag arrow body
     gfx_SetTextFGColor(3);
-    gfx_PrintString("  Drag: ");
+    gfx_PrintString("Drag: ");
     print_float(state->net_force.x, 1);
     
     gfx_SetColor(4);
     gfx_Line(CENTER_X, CENTER_Y, CENTER_X + state->net_force.x, CENTER_Y + state->net_force.y); // net force arrow body
     gfx_SetTextFGColor(4);
-    gfx_PrintString("  Net: ");
+    gfx_PrintString("Net: ");
     print_float(vec_Magnitude(state->net_force), 1);
 
 }

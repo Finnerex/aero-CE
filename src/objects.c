@@ -16,7 +16,7 @@ vec2_t tringle_norms[3];
 obj_t tringle_data = {tringle_norms, tringle_faces, tringle_verts, 3, 3};
 
 face_t diamond_faces[4] = {{0, 1}, {1, 2}, {2, 3}, {3, 0}};
-vec2_t diamond_verts[4] = {{CENTER_X - 20, CENTER_Y}, {CENTER_X, CENTER_Y + 20}, {CENTER_X + 20, CENTER_Y}, {CENTER_X, CENTER_Y - 20}};
+vec2_t diamond_verts[4] = {{CENTER_X - 40, CENTER_Y}, {CENTER_X, CENTER_Y + 20}, {CENTER_X + 40, CENTER_Y}, {CENTER_X, CENTER_Y - 20}};
 vec2_t diamond_norms[8];
 obj_t diamond_data = {diamond_norms, diamond_faces, diamond_verts, 4, 4};
 

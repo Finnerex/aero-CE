@@ -2,10 +2,9 @@
 #include "objects.h"
 #include "vector.h"
 #include <graphx.h>
-#include <debug.h>
 #include <math.h>
 
-#define PI 3.1415926535
+#define PI 3.14159265358979
 
 vec2_t calculate_net_force(sim_state_t sim_state) {
 
@@ -17,7 +16,7 @@ vec2_t calculate_net_force(sim_state_t sim_state) {
 
         float angle = angle_between_vecs(sim_state.wind_velocity, normal);
         
-        if (angle > PI/2 || angle < -PI/2)
+        if (angle < PI/2 && angle > -PI/2)
             continue;
 
         vec2_t projected_velocity = vec_MultiplyFloat(normal, vec_Dot(normal, sim_state.wind_velocity) / (vec_SqrMagnitude(normal)));
@@ -25,9 +24,6 @@ vec2_t calculate_net_force(sim_state_t sim_state) {
 
         vec2_t face_force = vec_MultiplyFloat(pressure, vec_Magnitude(normal));
         face_force.y = -face_force.y;
-        
-        dbg_printf("Area: %f, %f, mag: %f\n", normal.x, normal.y, vec_Magnitude(normal));
-        dbg_printf("face: %f, %f, mag: %f\n", face_force.x, face_force.y, vec_Magnitude(face_force));
 
         net_force = vec_Add(net_force, face_force);
     }

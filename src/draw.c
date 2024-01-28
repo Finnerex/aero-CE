@@ -3,7 +3,6 @@
 #include "draw.h"
 #include <graphx.h>
 #include <math.h>
-#include <debug.h>
 
 void draw_object(obj_t* obj) {
 
@@ -107,7 +106,5 @@ void draw_forces(sim_state_t* state) {
     gfx_SetTextFGColor(4);
     gfx_PrintString(" Net: ");
     print_float(vec_Magnitude(state->net_force), 1);
-
-    dbg_printf("net mag: %f, lift: %f, drag: %f\n", vec_Magnitude(state->net_force), -state->net_force.y, state->net_force.x);
 
 }

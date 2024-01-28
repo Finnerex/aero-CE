@@ -7,11 +7,11 @@
 - Variable wind speed and direction.
 - Variable air density.
 
-#### Controls  
+#### Controls:  
 Up / Down - Rotate wind direction clockwise / counterclockwise.  
 Left / Right - Increase / decrease air speed.  
 Del / Stat - Increase / decrease air density.  
-2nd / Alpha - Change current object.
+2nd / Alpha - Change current object.  
 0 - Toggle light mode.  
 
 <img width="323" alt="diamond" src="https://github.com/Finnerex/aero-CE/assets/61033009/adc446da-f0c5-4f84-986c-f36771e81ae5">

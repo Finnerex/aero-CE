@@ -1,5 +1,5 @@
 # Aero CE  
-#### Aerodynamics wind tunnel simulation for the Ti-84 + CE
+### Aerodynamics wind tunnel simulation for the Ti-84 + CE
 #### Features:  
 
 - Various 2D objects to experiment with.

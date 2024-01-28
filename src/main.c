@@ -35,6 +35,10 @@ int main() {
 // global vars
 sim_state_t sim_state;
 
+#define NUM_OBJS 4
+int selected_object = 0;
+obj_t* objects[NUM_OBJS] = { tringle, face, square, diamond };
+
 bool step(void) {
     
     kb_Scan();
@@ -60,6 +64,15 @@ bool step(void) {
     else if (kb_Data[1] & kb_Del)
         sim_state.air_density -= 0.1f;
 
+    
+    // if (kb_Data[1] & kb_2nd) {
+    //     selected_object += selected_object + 1 >= NUM_OBJS ? 0 : 1;
+    //     sim_state.object = objects[selected_object];
+    // } else if (kb_Data[2] & kb_Alpha) {
+    //     selected_object -= selected_object - 1 < 0 ? 0 : 1;
+    //     sim_state.object = objects[selected_object];
+    // }
+
 
     update_sim_state(&sim_state);
 
@@ -77,6 +90,7 @@ void draw(void) {
     draw_object(sim_state.object);
     draw_info(&sim_state);
     draw_forces(&sim_state);
+    draw_norms(sim_state.object);
 
 }
 
@@ -84,7 +98,7 @@ void draw(void) {
 void begin(void) {
 
     sim_state.wind_velocity.x = INIT_WIND_SPEED;
-    sim_state.object = face;
+    sim_state.object = tringle;
     sim_state.air_density = INIT_AIR_DENSITY;
 
     for (int i = 0; i < sim_state.object->num_faces; i++) {

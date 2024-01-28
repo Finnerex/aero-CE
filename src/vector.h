@@ -21,5 +21,6 @@ vec2_t vec_DivideFloat(vec2_t vec, float val);
 float vec_SqrMagnitude(vec2_t vec);
 vec2_t vec_PerpendicularComponent(vec2_t vec1, vec2_t vec2);
 float angle_between_vecs(vec2_t vec1, vec2_t vec2);
+vec2_t vec_AsComponentOf(vec2_t vec1, vec2_t vec2);
 
 #endif

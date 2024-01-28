@@ -19,11 +19,11 @@ vec2_t calculate_net_force(sim_state_t sim_state) {
         if (angle < PI/2 && angle > -PI/2)
             continue;
 
-        vec2_t projected_velocity = vec_MultiplyFloat(normal, vec_Dot(normal, sim_state.wind_velocity) / (vec_SqrMagnitude(normal)));
+        vec2_t projected_velocity = vec_AsComponentOf(sim_state.wind_velocity, normal);
         vec2_t pressure = vec_MultiplyFloat(vec_Multiply(projected_velocity, projected_velocity), sim_state.air_density / 2);
 
         vec2_t face_force = vec_MultiplyFloat(pressure, vec_Magnitude(normal));
-        face_force.y = -face_force.y;
+        face_force.y = -face_force.y; // lmao
 
         net_force = vec_Add(net_force, face_force);
     }

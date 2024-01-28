@@ -13,4 +13,7 @@ extern obj_t face_data;
 extern obj_t tringle_data;
 #define tringle &tringle_data
 
+extern obj_t diamond_data;
+#define diamond &diamond_data
+
 #endif

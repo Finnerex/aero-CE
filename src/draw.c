@@ -20,21 +20,18 @@ void draw_norms(obj_t* obj) {
     
         vec2_t normal_vec;
         vec2_t normal_vec2;
-        vec2_t norm_vert1;
-        vec2_t norm_vert2;
+        vec2_t face_vec = vec_Subtract(*verts[0], *verts[1]);
 
-        norm_vert1.x = verts[0]->x;
-        norm_vert1.y = verts[1]->y;
-        norm_vert2.x = verts[1]->x;
-        norm_vert2.y = verts[0]->y;
+        normal_vec.x = face_vec.y;
+        normal_vec.y = -face_vec.x;
+        normal_vec2.x = -face_vec.y;
+        normal_vec2.y = face_vec.x;
 
         vec2_t subtracter = *verts[0];
 
         vec2_t middle_of_face = vec_Add(vec_MultiplyFloat(vec_Subtract(*verts[1], subtracter), 0.5f), subtracter);
 
-        normal_vec = vec_Subtract(norm_vert2, norm_vert1);
         vec2_t vec_check = vec_Add(normal_vec, middle_of_face);
-        normal_vec2 = vec_Subtract(norm_vert1, norm_vert2);
         vec2_t vec_check2 = vec_Add(normal_vec2, middle_of_face);
 
         vec2_t center_vec = {CENTER_X, CENTER_Y};
@@ -73,21 +70,24 @@ void draw_info(sim_state_t* state) {
     print_float(state->air_density, 2);
     gfx_PrintString("kg/m^3");
 
-    gfx_SetTextXY(10, 20);
-    gfx_PrintString("Air speed - x: ");
-    print_float(state->wind_velocity.x, 1);
-    gfx_PrintString(" y: ");
-    print_float(state->wind_velocity.y, 1);
+    // gfx_SetTextXY(10, 20);
+    // gfx_PrintString("Air speed - x: ");
+    // print_float(state->wind_velocity.x, 1);
+    // gfx_PrintString(" y: ");
+    // print_float(state->wind_velocity.y, 1);
 
     vec2_t wind_dir = vec_MultiplyFloat(vec_Normalize(state->wind_velocity), 10);
-    gfx_Line(30, 30, 30 + wind_dir.x, 30 + wind_dir.y);
-    gfx_SetColor(3);
+    gfx_SetColor(6);
+    gfx_Line(5 - wind_dir.x, CENTER_Y - wind_dir.y, 5 + wind_dir.x, CENTER_Y + wind_dir.y);
     gfx_Rectangle(30 + wind_dir.x, 30 + wind_dir.y, 2, 2);
+    gfx_Line(5 - wind_dir.x, CENTER_Y - wind_dir.y, 5 + wind_dir.x, CENTER_Y + wind_dir.y);
 
 }
 
 void draw_forces(sim_state_t* state) {
     
+    
+    // vec2_t projected_lift = vec_AsComponentOf((vec2_t){0, state->net_force.y}, state->wind_velocity);
     gfx_SetColor(5);
     gfx_Line(CENTER_X, CENTER_Y, CENTER_X, CENTER_Y + state->net_force.y); // lift arrow body
     gfx_SetTextFGColor(5);
@@ -95,16 +95,17 @@ void draw_forces(sim_state_t* state) {
     gfx_PrintString("Lift: ");
     print_float(-state->net_force.y, 1);
     
+    // vec2_t projected_drag = vec_AsComponentOf((vec2_t){state->net_force.x, 0}, state->wind_velocity);
     gfx_SetColor(3);
     gfx_Line(CENTER_X, CENTER_Y, CENTER_X + state->net_force.x, CENTER_Y); // drag arrow body
     gfx_SetTextFGColor(3);
-    gfx_PrintString(" Drag: ");
+    gfx_PrintString("  Drag: ");
     print_float(state->net_force.x, 1);
     
     gfx_SetColor(4);
     gfx_Line(CENTER_X, CENTER_Y, CENTER_X + state->net_force.x, CENTER_Y + state->net_force.y); // net force arrow body
     gfx_SetTextFGColor(4);
-    gfx_PrintString(" Net: ");
+    gfx_PrintString("  Net: ");
     print_float(vec_Magnitude(state->net_force), 1);
 
 }

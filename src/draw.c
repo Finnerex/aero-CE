@@ -106,13 +106,13 @@ void draw_forces(sim_state_t* state) {
     gfx_SetColor(3);
     gfx_Line(CENTER_X, CENTER_Y, CENTER_X + state->net_force.x, CENTER_Y); // drag arrow body
     gfx_SetTextFGColor(3);
-    gfx_PrintString("Drag: ");
+    gfx_PrintString("   Drag: ");
     print_float(state->net_force.x, 1);
     
     gfx_SetColor(4);
     gfx_Line(CENTER_X, CENTER_Y, CENTER_X + state->net_force.x, CENTER_Y + state->net_force.y); // net force arrow body
     gfx_SetTextFGColor(4);
-    gfx_PrintString("Net: ");
+    gfx_PrintString("   Net: ");
     print_float(vec_Magnitude(state->net_force), 1);
 
 }

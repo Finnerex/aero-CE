@@ -2791,12 +2791,12 @@ _.str.5:
 	section	.rodata,"a",@progbits
 	private	_.str.6
 _.str.6:
-	db	"Drag: ", 0
+	db	"   Drag: ", 0
 
 	section	.rodata,"a",@progbits
 	private	_.str.7
 _.str.7:
-	db	"Net: ", 0
+	db	"   Net: ", 0
 
 	section	.data,"aw",@progbits
 	public	_global_palette

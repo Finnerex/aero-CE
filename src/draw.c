@@ -56,9 +56,18 @@ void print_float(float in, int places) {
     gfx_PrintInt(abs((int)(in * dec) % (dec)), 1);
 }
 
+#define SCALE_X (GFX_LCD_WIDTH - 10 - PIXELS_PER_METER)
+
 void draw_info(sim_state_t* state) {
 
     gfx_HorizLine(0, GFX_LCD_HEIGHT - INFO_SECT_HEIGHT, GFX_LCD_WIDTH);
+
+    
+    gfx_HorizLine(SCALE_X, 5, PIXELS_PER_METER);
+    gfx_VertLine(SCALE_X, 3, 6);
+    gfx_VertLine(SCALE_X + PIXELS_PER_METER, 3, 6);
+    gfx_SetTextXY(SCALE_X, 12);
+    gfx_PrintString("1m");
 
     gfx_SetTextXY(5, GFX_LCD_HEIGHT - INFO_SECT_HEIGHT / 2);
     gfx_PrintString("Wind Speed: ");
@@ -70,25 +79,16 @@ void draw_info(sim_state_t* state) {
     print_float(state->air_density, 2);
     gfx_PrintString("kg/m^3");
 
-    // gfx_SetTextXY(10, 20);
-    // gfx_PrintString("Air speed - x: ");
-    // print_float(state->wind_velocity.x, 1);
-    // gfx_PrintString(" y: ");
-    // print_float(state->wind_velocity.y, 1);
-
     vec2_t wind_dir = vec_MultiplyFloat(vec_Normalize(state->wind_velocity), 10);
-    gfx_SetColor(6);
+    gfx_SetColor(2);
     gfx_Line(15 - wind_dir.x, CENTER_Y - wind_dir.y, 15 + wind_dir.x, CENTER_Y + wind_dir.y);
-    gfx_SetColor(3);
-    gfx_Rectangle(15 + wind_dir.x, CENTER_Y + wind_dir.y, 2, 1);
-    gfx_SetColor(6);
     gfx_Line(CENTER_X - wind_dir.x, 15 - wind_dir.y, CENTER_X + wind_dir.x, 15 + wind_dir.y);
-    gfx_SetColor(3);
-    gfx_Rectangle(CENTER_X + wind_dir.x, 15 + wind_dir.y, 2, 1);
-    gfx_SetColor(6);
     gfx_Line((GFX_LCD_WIDTH - 15) - wind_dir.x, CENTER_Y - wind_dir.y, (GFX_LCD_WIDTH - 15) + wind_dir.x, CENTER_Y + wind_dir.y);
-    gfx_SetColor(3);
-    gfx_Rectangle((GFX_LCD_WIDTH -15) + wind_dir.x, CENTER_Y + wind_dir.y, 2, 1);
+
+    gfx_SetColor(5);
+    gfx_SetPixel((GFX_LCD_WIDTH -15) + wind_dir.x, CENTER_Y + wind_dir.y);
+    gfx_SetPixel(CENTER_X + wind_dir.x, 15 + wind_dir.y);
+    gfx_SetPixel(15 + wind_dir.x, CENTER_Y + wind_dir.y);
 }
 
 void draw_forces(sim_state_t* state) {

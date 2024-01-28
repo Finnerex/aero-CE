@@ -35,9 +35,10 @@ int main() {
 // global vars
 sim_state_t sim_state;
 
-#define NUM_OBJS 4
-int selected_object = 2;
-obj_t* objects[NUM_OBJS] = { tringle, face, square, diamond };
+#define NUM_OBJS 5
+int selected_object = 1;
+obj_t* objects[NUM_OBJS] = { tringle, octogon, square, diamond, kite };
+bool dark_mode = true;
 
 bool step(void) {
 
@@ -46,6 +47,13 @@ bool step(void) {
     if (kb_Data[6] & kb_Clear)
         return false;
 
+    static bool zero, last_zero;
+    zero = kb_Data[3] & kb_0;
+
+    if (zero && !last_zero)
+        dark_mode = !dark_mode;
+
+    last_zero = zero;
 
     if (kb_Data[7] & kb_Up)
         sim_state.wind_velocity = vec_Rotate(sim_state.wind_velocity, 0.05f);
@@ -85,10 +93,10 @@ bool step(void) {
 
 void draw(void) {
 
-    gfx_FillScreen(1);
+    gfx_FillScreen(!dark_mode);
 
-    gfx_SetColor(2); // white
-    gfx_SetTextFGColor(2);
+    gfx_SetColor(dark_mode);
+    gfx_SetTextFGColor(dark_mode);
 
     draw_object(objects[selected_object]);
     draw_info(&sim_state);

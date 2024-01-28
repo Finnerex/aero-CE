@@ -10,6 +10,11 @@ vec2_t face_verts[2] = {{CENTER_X + 10, CENTER_Y + 30}, {CENTER_X - 30, CENTER_Y
 vec2_t face_norms[1];
 obj_t face_data = {face_norms, face_face, face_verts, 1, 2};
 
+face_t tringle_faces[3] = {{0, 1}, {1, 2}, {2, 0}};
+vec2_t tringle_verts[3] = {{CENTER_X - 20, CENTER_Y + 5}, {CENTER_X, CENTER_Y - 10}, {CENTER_X + 5, CENTER_Y + 5}};
+vec2_t tringle_norms[3];
+obj_t tringle_data = {tringle_norms, tringle_faces, tringle_verts, 3, 3};
+
 // face_t user_faces[8];
 // vec2_t user_verts[8];
 // vec2_t user_norms[8];

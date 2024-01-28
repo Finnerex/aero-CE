@@ -8,8 +8,6 @@
 #include "vector.h"
 #include "gfx/gfx.h"
 
-#define PI 3.1415926535
-
 void begin(void);
 void end(void);
 bool step(void);
@@ -50,12 +48,12 @@ bool step(void) {
     else if (kb_Data[7] & kb_Down)
         sim_state.wind_velocity = vec_Rotate(sim_state.wind_velocity, -0.05f);
 
-        
 
     if (kb_Data[7] & kb_Right)
         sim_state.wind_velocity = vec_AddLength(sim_state.wind_velocity, 0.1f);
     else if (kb_Data[7] & kb_Left)
         sim_state.wind_velocity = vec_AddLength(sim_state.wind_velocity, -0.1f);
+
 
     if (kb_Data[1] & kb_Del)
         sim_state.air_density += 0.1f;
@@ -91,7 +89,7 @@ void begin(void) {
 
     for (int i = 0; i < sim_state.object->num_faces; i++) {
         vec2_t verts[2] = {sim_state.object->verts[sim_state.object->faces[i][0]],
-                            sim_state.object->verts[sim_state.object->faces[i][1]]}; 
+                           sim_state.object->verts[sim_state.object->faces[i][1]]}; 
         sim_state.object->normals[i] = get_face_normal(verts[0], verts[1]);
     }
 }

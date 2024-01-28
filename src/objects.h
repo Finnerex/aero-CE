@@ -10,4 +10,7 @@ extern obj_t square_data;
 extern obj_t face_data;
 #define face &face_data
 
+extern obj_t tringle_data;
+#define tringle &tringle_data
+
 #endif

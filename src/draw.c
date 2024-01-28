@@ -3,20 +3,61 @@
 #include "draw.h"
 #include <graphx.h>
 #include <math.h>
+#include <debug.h>
 
 void draw_object(obj_t* obj) {
 
     for (int i = 0; i < obj->num_faces; i++) {
         vec2_t* verts[2] = {&obj->verts[obj->faces[i][0]], &obj->verts[obj->faces[i][1]]};
         gfx_Line(verts[0]->x, verts[0]->y, verts[1]->x, verts[1]->y);
-    }
+    } 
+
+}
+
+void draw_norms(obj_t* obj) {
+
+    for (int i = 0; i < obj->num_faces; i++) {
+        vec2_t* verts[2] = {&obj->verts[obj->faces[i][0]], &obj->verts[obj->faces[i][1]]};
+    
+        vec2_t normal_vec;
+        vec2_t normal_vec2;
+        vec2_t norm_vert1;
+        vec2_t norm_vert2;
+
+        norm_vert1.x = verts[0]->x;
+        norm_vert1.y = verts[1]->y;
+        norm_vert2.x = verts[1]->x;
+        norm_vert2.y = verts[0]->y;
+
+        vec2_t subtracter = *verts[0];
+
+        vec2_t middle_of_face = vec_Add(vec_MultiplyFloat(vec_Subtract(*verts[1], subtracter), 0.5f), subtracter);
+
+        normal_vec = vec_Subtract(norm_vert2, norm_vert1);
+        vec2_t vec_check = vec_Add(normal_vec, middle_of_face);
+        normal_vec2 = vec_Subtract(norm_vert1, norm_vert2);
+        vec2_t vec_check2 = vec_Add(normal_vec2, middle_of_face);
+
+        vec2_t center_vec = {CENTER_X, CENTER_Y};
+
+        float distance_from_center = vec_Magnitude(vec_Subtract(vec_check, center_vec));
+        float distance_from_center2 = vec_Magnitude(vec_Subtract(vec_check2, center_vec));
+
+        gfx_SetColor(4);
+        if (distance_from_center > distance_from_center2)
+            gfx_Line(middle_of_face.x, middle_of_face.y, vec_check.x, vec_check.y);
+        else
+            gfx_Line(middle_of_face.x, middle_of_face.y, vec_check2.x, vec_check2.y);
+        }    
 
 }
 
 void print_float(float in, int places) {
-    gfx_PrintInt(in * 10 * places, 1);
-    // gfx_PrintString(".");
-    // gfx_PrintInt(abs(((int)(in * 10 * places)) % (10 * places)), 1);
+    int dec = powf(10, places);
+
+    gfx_PrintInt(in, 1);
+    gfx_PrintString(".");
+    gfx_PrintInt(abs((int)(in * dec) % (dec)), 1);
 }
 
 void draw_info(sim_state_t* state) {
@@ -34,7 +75,13 @@ void draw_info(sim_state_t* state) {
     gfx_PrintString("kg/m^3");
 
     vec2_t wind_dir = vec_MultiplyFloat(vec_Normalize(state->wind_velocity), 4);
-    gfx_Line(10, 10, 10 + wind_dir.x, 10 + wind_dir.y);
+    gfx_Line(10, 10, 30 + wind_dir.x, 30 + wind_dir.y);
+
+    gfx_SetTextXY(10, 20);
+    gfx_PrintString("Air speed - x: ");
+    print_float(state->wind_velocity.x, 1);
+    gfx_PrintString(" y: ");
+    print_float(state->wind_velocity.y, 1);
 
 }
 
@@ -58,5 +105,7 @@ void draw_forces(sim_state_t* state) {
     gfx_SetTextFGColor(4);
     gfx_PrintString(" Net: ");
     print_float(vec_Magnitude(state->net_force), 1);
+
+    dbg_printf("net mag: %f, lift: %f, drag: %f\n", vec_Magnitude(state->net_force), -state->net_force.y, state->net_force.x);
 
 }

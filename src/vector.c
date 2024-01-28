@@ -15,9 +15,9 @@ vec2_t vec_MultiplyFloat(vec2_t vec, float val) {
 //     return (vec2_t) {vec1.x / vec2.x, vec1.y / vec2.y};
 // }
 
-// vec2_t vec_DivideFloat(vec2_t vec, float val) {
-//     return (vec2_t) {vec.x / val, vec.y / val};
-// }
+vec2_t vec_DivideFloat(vec2_t vec, float val) {
+    return (vec2_t) {vec.x / val, vec.y / val};
+}
 
 vec2_t vec_Add(vec2_t vec1, vec2_t vec2) {
     return (vec2_t) {vec1.x + vec2.x, vec1.y + vec2.y};
@@ -37,6 +37,10 @@ float vec_Magnitude(vec2_t vec) {
     return sqrtf(vec.x * vec.x + vec.y * vec.y);
 }
 
+float vec_SqrMagnitude(vec2_t vec) {
+    return vec.x * vec.x + vec.y * vec.y;
+}
+
 vec2_t vec_Rotate(vec2_t vec, float radians) {
     float x = (vec.x * cosf(radians) + vec.y * sinf(radians));
     float y = (vec.y * cosf(radians) - vec.x * sinf(radians));
@@ -46,6 +50,15 @@ vec2_t vec_Rotate(vec2_t vec, float radians) {
 vec2_t vec_Normalize(vec2_t vec) {
     float magnitude = vec_Magnitude(vec);
     return (vec2_t) {vec.x / magnitude, vec.y / magnitude};
+}
+
+float vec_Dot(vec2_t vec1, vec2_t vec2) {
+    return vec1.x * vec2.x + vec1.y * vec2.y;
+}
+
+// component of vec1 that is perpendicular to vec2 (face = vec1, vel = vec2)
+vec2_t vec_PerpendicularComponent(vec2_t vec1, vec2_t vec2) { 
+    return vec_Subtract(vec1, vec_DivideFloat(vec_MultiplyFloat(vec2, vec_Dot(vec1, vec2)), vec_SqrMagnitude(vec2)));
 }
 
 vec2_t get_face_normal(vec2_t vert1, vec2_t vert2) { // normal * length
@@ -74,7 +87,7 @@ vec2_t get_face_normal(vec2_t vert1, vec2_t vert2) { // normal * length
     float distance_from_center = vec_Magnitude(vec_Subtract(vec_check, center_vec));
     float distance_from_center2 = vec_Magnitude(vec_Subtract(vec_check2, center_vec));
 
-    if (distance_from_center < distance_from_center2)
+    if (distance_from_center > distance_from_center2)
         return normal_vec;
 
     return normal_vec2;

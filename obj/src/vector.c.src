@@ -1,0 +1,2578 @@
+	section	.text,"ax",@progbits
+	assume	adl = 1
+	section	.text,"ax",@progbits
+	public	_vec_Multiply
+_vec_Multiply:
+	private	func_begin0
+func_begin0:
+	file	0 "C:\CEdev\projects\aero-CE" "src\vector.c" md5 0xd3240a9443a88153103236e883bf08a9
+	file	1 "src" "vector.c" md5 0xd3240a9443a88153103236e883bf08a9
+	loc	1 6 0
+	cfi_sections .debug_frame
+	cfi_startproc
+	call	__frameset0
+	private	tmp0
+tmp0:
+	cfi_def_cfa ix, 6
+	cfi_offset ix, -6
+	ld	iy, (ix + 6)
+	private	tmp1
+tmp1:
+	loc	1 7 27 prologue_end
+	ld	bc, (ix + 9)
+	loc	1 7 36 is_stmt 0
+	ld	hl, (ix + 18)
+	loc	1 7 29
+	ld	a, (ix + 12)
+	ld	e, (ix + 21)
+	call	__fmul
+	private	tmp2
+tmp2:
+	loc	1 7 21
+	ld	(iy), bc
+	ld	(iy + 3), a
+	loc	1 7 44
+	ld	bc, (ix + 13)
+	loc	1 7 53
+	ld	hl, (ix + 22)
+	loc	1 7 46
+	ld	a, (ix + 16)
+	ld	e, (ix + 25)
+	call	__fmul
+	private	tmp3
+tmp3:
+	loc	1 7 21
+	ld	(iy + 4), bc
+	ld	(iy + 7), a
+	loc	1 7 5
+	lea	hl, iy
+	pop	ix
+	cfi_def_cfa sp, 3
+	cfi_restore ix
+	ret
+	private	tmp4
+tmp4:
+	section	.text,"ax",@progbits
+	private	func_end0
+func_end0:
+	cfi_endproc
+
+	section	.text,"ax",@progbits
+	public	_vec_MultiplyFloat
+_vec_MultiplyFloat:
+	private	func_begin1
+func_begin1:
+	loc	1 10 0 is_stmt 1
+	cfi_startproc
+	call	__frameset0
+	private	tmp5
+tmp5:
+	cfi_def_cfa ix, 6
+	cfi_offset ix, -6
+	ld	iy, (ix + 6)
+	ld	hl, (ix + 18)
+	ld	e, (ix + 21)
+	private	tmp6
+tmp6:
+	loc	1 11 26 prologue_end
+	ld	bc, (ix + 9)
+	loc	1 11 28 is_stmt 0
+	ld	a, (ix + 12)
+	call	__fmul
+	private	tmp7
+tmp7:
+	loc	1 11 21
+	ld	(iy), bc
+	ld	(iy + 3), a
+	loc	1 11 39
+	ld	bc, (ix + 13)
+	loc	1 11 41
+	ld	a, (ix + 16)
+	call	__fmul
+	private	tmp8
+tmp8:
+	loc	1 11 21
+	ld	(iy + 4), bc
+	ld	(iy + 7), a
+	loc	1 11 5
+	lea	hl, iy
+	pop	ix
+	cfi_def_cfa sp, 3
+	cfi_restore ix
+	ret
+	private	tmp9
+tmp9:
+	section	.text,"ax",@progbits
+	private	func_end1
+func_end1:
+	cfi_endproc
+
+	section	.text,"ax",@progbits
+	public	_vec_DivideFloat
+_vec_DivideFloat:
+	private	func_begin2
+func_begin2:
+	loc	1 18 0 is_stmt 1
+	cfi_startproc
+	call	__frameset0
+	private	tmp10
+tmp10:
+	cfi_def_cfa ix, 6
+	cfi_offset ix, -6
+	ld	iy, (ix + 6)
+	ld	hl, (ix + 18)
+	ld	e, (ix + 21)
+	private	tmp11
+tmp11:
+	loc	1 19 26 prologue_end
+	ld	bc, (ix + 9)
+	loc	1 19 28 is_stmt 0
+	ld	a, (ix + 12)
+	call	__fdiv
+	private	tmp12
+tmp12:
+	loc	1 19 21
+	ld	(iy), bc
+	ld	(iy + 3), a
+	loc	1 19 39
+	ld	bc, (ix + 13)
+	loc	1 19 41
+	ld	a, (ix + 16)
+	call	__fdiv
+	private	tmp13
+tmp13:
+	loc	1 19 21
+	ld	(iy + 4), bc
+	ld	(iy + 7), a
+	loc	1 19 5
+	lea	hl, iy
+	pop	ix
+	cfi_def_cfa sp, 3
+	cfi_restore ix
+	ret
+	private	tmp14
+tmp14:
+	section	.text,"ax",@progbits
+	private	func_end2
+func_end2:
+	cfi_endproc
+
+	section	.text,"ax",@progbits
+	public	_vec_Add
+_vec_Add:
+	private	func_begin3
+func_begin3:
+	loc	1 22 0 is_stmt 1
+	cfi_startproc
+	call	__frameset0
+	private	tmp15
+tmp15:
+	cfi_def_cfa ix, 6
+	cfi_offset ix, -6
+	ld	iy, (ix + 6)
+	private	tmp16
+tmp16:
+	loc	1 23 27 prologue_end
+	ld	bc, (ix + 9)
+	loc	1 23 36 is_stmt 0
+	ld	hl, (ix + 18)
+	loc	1 23 29
+	ld	a, (ix + 12)
+	ld	e, (ix + 21)
+	call	__fadd
+	private	tmp17
+tmp17:
+	loc	1 23 21
+	ld	(iy), bc
+	ld	(iy + 3), a
+	loc	1 23 44
+	ld	bc, (ix + 13)
+	loc	1 23 53
+	ld	hl, (ix + 22)
+	loc	1 23 46
+	ld	a, (ix + 16)
+	ld	e, (ix + 25)
+	call	__fadd
+	private	tmp18
+tmp18:
+	loc	1 23 21
+	ld	(iy + 4), bc
+	ld	(iy + 7), a
+	loc	1 23 5
+	lea	hl, iy
+	pop	ix
+	cfi_def_cfa sp, 3
+	cfi_restore ix
+	ret
+	private	tmp19
+tmp19:
+	section	.text,"ax",@progbits
+	private	func_end3
+func_end3:
+	cfi_endproc
+
+	section	.text,"ax",@progbits
+	public	_vec_AddLength
+_vec_AddLength:
+	private	func_begin4
+func_begin4:
+	loc	1 26 0 is_stmt 1
+	cfi_startproc
+	ld	hl, -6
+	call	__frameset
+	private	tmp20
+tmp20:
+	cfi_def_cfa ix, 6
+	cfi_offset ix, -6
+	loc	1 36 28 prologue_end
+	ld	d, (ix + 12)
+	private	tmp21
+tmp21:
+	ld	bc, (ix + 13)
+	ld	(ix - 3), bc
+	ld	a, (ix + 16)
+	private	tmp22
+tmp22:
+	loc	1 37 40
+	ld	(ix - 4), a
+	push	bc
+	pop	hl
+	ld	e, a
+	call	__fmul
+	private	tmp23
+tmp23:
+	push	bc
+	pop	iy
+	ld	(ix - 6), a
+	ld	bc, (ix + 9)
+	loc	1 37 32 is_stmt 0
+	ld	(ix - 5), d
+	ld	a, d
+	push	bc
+	pop	hl
+	ld	e, d
+	call	__fmul
+	private	tmp24
+tmp24:
+	lea	hl, iy
+	ld	e, (ix - 6)
+	call	__fadd
+	private	tmp25
+tmp25:
+	ld	l, a
+	loc	1 37 12
+	push	hl
+	push	bc
+	call	_sqrtf
+	private	tmp26
+tmp26:
+	push	hl
+	pop	iy
+	ld	d, e
+	pop	hl
+	pop	hl
+	private	tmp27
+tmp27:
+	loc	1 28 27 is_stmt 1
+	lea	bc, iy
+	ld	a, d
+	ld	hl, (ix + 18)
+	ld	e, (ix + 21)
+	call	__fadd
+	private	tmp28
+tmp28:
+	loc	1 28 34 is_stmt 0
+	lea	hl, iy
+	ld	e, d
+	call	__fdiv
+	private	tmp29
+tmp29:
+	push	bc
+	pop	hl
+	ld	e, a
+	private	tmp30
+tmp30:
+	loc	1 29 28 is_stmt 1
+	ld	bc, (ix + 9)
+	ld	a, (ix - 5)
+	call	__fmul
+	private	tmp31
+tmp31:
+	loc	1 0 28 is_stmt 0
+	ld	iy, (ix + 6)
+	loc	1 29 21
+	ld	(iy), bc
+	ld	(iy + 3), a
+	loc	1 29 43
+	ld	bc, (ix - 3)
+	ld	a, (ix - 4)
+	call	__fmul
+	private	tmp32
+tmp32:
+	loc	1 29 21
+	ld	(iy + 4), bc
+	ld	(iy + 7), a
+	loc	1 30 1 is_stmt 1
+	lea	hl, iy
+	ld	sp, ix
+	pop	ix
+	cfi_def_cfa sp, 3
+	cfi_restore ix
+	ret
+	private	tmp33
+tmp33:
+	section	.text,"ax",@progbits
+	private	func_end4
+func_end4:
+	cfi_endproc
+	file	2 "src" "vector.h" md5 0x80477f840ec6f117464b6e8fdeaf1dc1
+
+	section	.text,"ax",@progbits
+	public	_vec_Magnitude
+_vec_Magnitude:
+	private	func_begin5
+func_begin5:
+	loc	1 36 0
+	cfi_startproc
+	ld	hl, -1
+	call	__frameset
+	private	tmp34
+tmp34:
+	cfi_def_cfa ix, 6
+	cfi_offset ix, -6
+	loc	1 37 22 prologue_end
+	ld	d, (ix + 9)
+	loc	1 37 38 is_stmt 0
+	ld	bc, (ix + 10)
+	ld	a, (ix + 13)
+	loc	1 37 40
+	push	bc
+	pop	hl
+	ld	e, a
+	call	__fmul
+	private	tmp35
+tmp35:
+	push	bc
+	pop	iy
+	ld	(ix - 1), a
+	ld	bc, (ix + 6)
+	loc	1 37 32
+	ld	a, d
+	push	bc
+	pop	hl
+	ld	e, d
+	call	__fmul
+	private	tmp36
+tmp36:
+	lea	hl, iy
+	ld	e, (ix - 1)
+	call	__fadd
+	private	tmp37
+tmp37:
+	ld	l, a
+	loc	1 37 12
+	push	hl
+	push	bc
+	call	_sqrtf
+	private	tmp38
+tmp38:
+	loc	1 37 5
+	ld	sp, ix
+	pop	ix
+	cfi_def_cfa sp, 3
+	cfi_restore ix
+	ret
+	private	tmp39
+tmp39:
+	section	.text,"ax",@progbits
+	private	func_end5
+func_end5:
+	cfi_endproc
+
+	section	.text,"ax",@progbits
+	public	_vec_Subtract
+_vec_Subtract:
+	private	func_begin6
+func_begin6:
+	loc	1 32 0 is_stmt 1
+	cfi_startproc
+	call	__frameset0
+	private	tmp40
+tmp40:
+	cfi_def_cfa ix, 6
+	cfi_offset ix, -6
+	ld	iy, (ix + 6)
+	private	tmp41
+tmp41:
+	loc	1 33 27 prologue_end
+	ld	bc, (ix + 9)
+	loc	1 33 36 is_stmt 0
+	ld	hl, (ix + 18)
+	loc	1 33 29
+	ld	a, (ix + 12)
+	ld	e, (ix + 21)
+	call	__fsub
+	private	tmp42
+tmp42:
+	loc	1 33 21
+	ld	(iy), bc
+	ld	(iy + 3), a
+	loc	1 33 44
+	ld	bc, (ix + 13)
+	loc	1 33 53
+	ld	hl, (ix + 22)
+	loc	1 33 46
+	ld	a, (ix + 16)
+	ld	e, (ix + 25)
+	call	__fsub
+	private	tmp43
+tmp43:
+	loc	1 33 21
+	ld	(iy + 4), bc
+	ld	(iy + 7), a
+	loc	1 33 5
+	lea	hl, iy
+	pop	ix
+	cfi_def_cfa sp, 3
+	cfi_restore ix
+	ret
+	private	tmp44
+tmp44:
+	section	.text,"ax",@progbits
+	private	func_end6
+func_end6:
+	cfi_endproc
+
+	section	.text,"ax",@progbits
+	public	_vec_SqrMagnitude
+_vec_SqrMagnitude:
+	private	func_begin7
+func_begin7:
+	loc	1 40 0 is_stmt 1
+	cfi_startproc
+	ld	hl, -1
+	call	__frameset
+	private	tmp45
+tmp45:
+	cfi_def_cfa ix, 6
+	cfi_offset ix, -6
+	loc	1 41 16 prologue_end
+	ld	d, (ix + 9)
+	loc	1 41 32 is_stmt 0
+	ld	bc, (ix + 10)
+	ld	a, (ix + 13)
+	loc	1 41 34
+	push	bc
+	pop	hl
+	ld	e, a
+	call	__fmul
+	private	tmp46
+tmp46:
+	push	bc
+	pop	iy
+	ld	(ix - 1), a
+	ld	bc, (ix + 6)
+	loc	1 41 26
+	ld	a, d
+	push	bc
+	pop	hl
+	ld	e, d
+	call	__fmul
+	private	tmp47
+tmp47:
+	lea	hl, iy
+	ld	e, (ix - 1)
+	call	__fadd
+	private	tmp48
+tmp48:
+	loc	1 41 5
+	push	bc
+	pop	hl
+	ld	e, a
+	inc	sp
+	pop	ix
+	cfi_def_cfa sp, 3
+	cfi_restore ix
+	ret
+	private	tmp49
+tmp49:
+	section	.text,"ax",@progbits
+	private	func_end7
+func_end7:
+	cfi_endproc
+
+	section	.text,"ax",@progbits
+	public	_vec_Rotate
+_vec_Rotate:
+	private	func_begin8
+func_begin8:
+	loc	1 44 0 is_stmt 1
+	cfi_startproc
+	ld	hl, -13
+	call	__frameset
+	private	tmp50
+tmp50:
+	cfi_def_cfa ix, 6
+	cfi_offset ix, -6
+	ld	de, (ix + 18)
+	private	tmp51
+tmp51:
+	loc	1 45 20 prologue_end
+	ld	a, (ix + 12)
+	ld	(ix - 5), a
+	loc	1 45 24 is_stmt 0
+	ld	l, (ix + 21)
+	push	hl
+	push	de
+	call	_cosf
+	private	tmp52
+tmp52:
+	ld	(ix - 8), hl
+	ld	(ix - 9), e
+	pop	hl
+	pop	hl
+	loc	1 45 44
+	ld	hl, (ix + 13)
+	ld	(ix - 3), hl
+	ld	a, (ix + 16)
+	ld	(ix - 4), a
+	loc	1 45 48
+	ld	l, (ix + 21)
+	push	hl
+	ld	hl, (ix + 18)
+	push	hl
+	call	_sinf
+	private	tmp53
+tmp53:
+	pop	bc
+	pop	bc
+	loc	1 45 46
+	ld	bc, (ix - 3)
+	ld	a, (ix - 4)
+	call	__fmul
+	private	tmp54
+tmp54:
+	push	bc
+	pop	iy
+	ld	d, a
+	loc	1 45 38
+	ld	bc, (ix + 9)
+	ld	a, (ix - 5)
+	ld	hl, (ix - 8)
+	ld	e, (ix - 9)
+	call	__fmul
+	private	tmp55
+tmp55:
+	lea	hl, iy
+	ld	e, d
+	call	__fadd
+	private	tmp56
+tmp56:
+	ld	(ix - 8), bc
+	ld	(ix - 9), a
+	private	tmp57
+tmp57:
+	loc	1 46 24 is_stmt 1
+	ld	l, (ix + 21)
+	push	hl
+	ld	hl, (ix + 18)
+	push	hl
+	call	_cosf
+	private	tmp58
+tmp58:
+	ld	(ix - 12), hl
+	ld	(ix - 13), e
+	pop	hl
+	pop	hl
+	loc	1 46 48 is_stmt 0
+	ld	l, (ix + 21)
+	push	hl
+	ld	hl, (ix + 18)
+	push	hl
+	call	_sinf
+	private	tmp59
+tmp59:
+	push	hl
+	pop	iy
+	pop	hl
+	pop	hl
+	loc	1 46 38
+	ld	bc, (ix + 9)
+	ld	a, (ix - 5)
+	call	__fneg
+	private	tmp60
+tmp60:
+	push	bc
+	pop	hl
+	ld	d, a
+	lea	bc, iy
+	ld	a, e
+	ld	e, d
+	call	__fmul
+	private	tmp61
+tmp61:
+	push	bc
+	pop	iy
+	ld	d, a
+	ld	bc, (ix - 3)
+	ld	a, (ix - 4)
+	ld	hl, (ix - 12)
+	ld	e, (ix - 13)
+	call	__fmul
+	private	tmp62
+tmp62:
+	lea	hl, iy
+	ld	e, d
+	call	__fadd
+	private	tmp63
+tmp63:
+	loc	1 0 38
+	ld	iy, (ix + 6)
+	loc	1 47 21 is_stmt 1
+	ld	hl, (ix - 8)
+	ld	(iy), hl
+	ld	l, (ix - 9)
+	ld	(iy + 3), l
+	ld	(iy + 4), bc
+	ld	(iy + 7), a
+	loc	1 48 1
+	lea	hl, iy
+	ld	sp, ix
+	pop	ix
+	cfi_def_cfa sp, 3
+	cfi_restore ix
+	ret
+	private	tmp64
+tmp64:
+	section	.text,"ax",@progbits
+	private	func_end8
+func_end8:
+	cfi_endproc
+
+	section	.text,"ax",@progbits
+	public	_vec_Normalize
+_vec_Normalize:
+	private	func_begin9
+func_begin9:
+	loc	1 50 0
+	cfi_startproc
+	ld	hl, -6
+	call	__frameset
+	private	tmp65
+tmp65:
+	cfi_def_cfa ix, 6
+	cfi_offset ix, -6
+	loc	1 36 28 prologue_end
+	ld	d, (ix + 12)
+	private	tmp66
+tmp66:
+	ld	bc, (ix + 13)
+	ld	(ix - 3), bc
+	ld	a, (ix + 16)
+	private	tmp67
+tmp67:
+	loc	1 37 40
+	ld	(ix - 4), a
+	push	bc
+	pop	hl
+	ld	e, a
+	call	__fmul
+	private	tmp68
+tmp68:
+	push	bc
+	pop	iy
+	ld	(ix - 6), a
+	ld	bc, (ix + 9)
+	loc	1 37 32 is_stmt 0
+	ld	(ix - 5), d
+	ld	a, d
+	push	bc
+	pop	hl
+	ld	e, d
+	call	__fmul
+	private	tmp69
+tmp69:
+	lea	hl, iy
+	ld	e, (ix - 6)
+	call	__fadd
+	private	tmp70
+tmp70:
+	ld	l, a
+	loc	1 37 12
+	push	hl
+	push	bc
+	call	_sqrtf
+	private	tmp71
+tmp71:
+	pop	bc
+	pop	bc
+	private	tmp72
+tmp72:
+	loc	1 52 28 is_stmt 1
+	ld	bc, (ix + 9)
+	ld	a, (ix - 5)
+	call	__fdiv
+	private	tmp73
+tmp73:
+	loc	1 0 28 is_stmt 0
+	ld	iy, (ix + 6)
+	loc	1 52 21
+	ld	(iy), bc
+	ld	(iy + 3), a
+	loc	1 52 47
+	ld	bc, (ix - 3)
+	ld	a, (ix - 4)
+	call	__fdiv
+	private	tmp74
+tmp74:
+	loc	1 52 21
+	ld	(iy + 4), bc
+	ld	(iy + 7), a
+	loc	1 53 1 is_stmt 1
+	lea	hl, iy
+	ld	sp, ix
+	pop	ix
+	cfi_def_cfa sp, 3
+	cfi_restore ix
+	ret
+	private	tmp75
+tmp75:
+	section	.text,"ax",@progbits
+	private	func_end9
+func_end9:
+	cfi_endproc
+
+	section	.text,"ax",@progbits
+	public	_vec_Dot
+_vec_Dot:
+	private	func_begin10
+func_begin10:
+	loc	1 55 0
+	cfi_startproc
+	ld	hl, -2
+	call	__frameset
+	private	tmp76
+tmp76:
+	cfi_def_cfa ix, 6
+	cfi_offset ix, -6
+	loc	1 56 17 prologue_end
+	ld	a, (ix + 9)
+	ld	(ix - 2), a
+	loc	1 56 26 is_stmt 0
+	ld	a, (ix + 18)
+	ld	(ix - 1), a
+	loc	1 56 35
+	ld	bc, (ix + 10)
+	loc	1 56 44
+	ld	hl, (ix + 19)
+	loc	1 56 37
+	ld	a, (ix + 13)
+	ld	e, (ix + 22)
+	call	__fmul
+	private	tmp77
+tmp77:
+	push	bc
+	pop	iy
+	ld	d, a
+	loc	1 56 28
+	ld	bc, (ix + 6)
+	ld	a, (ix - 2)
+	ld	hl, (ix + 15)
+	ld	e, (ix - 1)
+	call	__fmul
+	private	tmp78
+tmp78:
+	lea	hl, iy
+	ld	e, d
+	call	__fadd
+	private	tmp79
+tmp79:
+	loc	1 56 5
+	push	bc
+	pop	hl
+	ld	e, a
+	ld	sp, ix
+	pop	ix
+	cfi_def_cfa sp, 3
+	cfi_restore ix
+	ret
+	private	tmp80
+tmp80:
+	section	.text,"ax",@progbits
+	private	func_end10
+func_end10:
+	cfi_endproc
+
+	section	.text,"ax",@progbits
+	public	_vec_PerpendicularComponent
+_vec_PerpendicularComponent:
+	private	func_begin11
+func_begin11:
+	loc	1 60 0 is_stmt 1
+	cfi_startproc
+	ld	hl, -15
+	call	__frameset
+	private	tmp81
+tmp81:
+	cfi_def_cfa ix, 6
+	cfi_offset ix, -6
+	loc	1 56 17 prologue_end
+	ld	a, (ix + 12)
+	ld	(ix - 1), a
+	loc	1 56 26 is_stmt 0
+	ld	d, (ix + 21)
+	loc	1 56 35
+	ld	bc, (ix + 13)
+	ld	(ix - 4), bc
+	ld	a, (ix + 16)
+	loc	1 56 44
+	ld	(ix - 5), a
+	ld	iy, (ix + 22)
+	ld	e, (ix + 25)
+	loc	1 56 37
+	ld	(ix - 14), e
+	lea	hl, iy
+	call	__fmul
+	private	tmp82
+tmp82:
+	ld	(ix - 8), bc
+	ld	(ix - 9), a
+	loc	1 56 28
+	ld	bc, (ix + 9)
+	ld	a, (ix - 1)
+	ld	hl, (ix + 18)
+	ld	(ix - 15), d
+	ld	e, d
+	call	__fmul
+	private	tmp83
+tmp83:
+	ld	hl, (ix - 8)
+	ld	e, (ix - 9)
+	call	__fadd
+	private	tmp84
+tmp84:
+	push	bc
+	pop	hl
+	ld	e, a
+	private	tmp85
+tmp85:
+	loc	1 11 28 is_stmt 1
+	ld	bc, (ix + 18)
+	ld	a, d
+	call	__fmul
+	private	tmp86
+tmp86:
+	ld	(ix - 12), bc
+	ld	(ix - 13), a
+	loc	1 11 41 is_stmt 0
+	lea	bc, iy
+	ld	d, (ix - 14)
+	ld	a, d
+	call	__fmul
+	private	tmp87
+tmp87:
+	ld	(ix - 8), bc
+	ld	(ix - 9), a
+	private	tmp88
+tmp88:
+	loc	1 41 34 is_stmt 1
+	lea	bc, iy
+	ld	a, d
+	lea	hl, iy
+	ld	e, d
+	call	__fmul
+	private	tmp89
+tmp89:
+	push	bc
+	pop	iy
+	ld	d, a
+	ld	bc, (ix + 18)
+	ld	a, (ix - 15)
+	loc	1 41 26 is_stmt 0
+	push	bc
+	pop	hl
+	ld	e, a
+	call	__fmul
+	private	tmp90
+tmp90:
+	lea	hl, iy
+	ld	e, d
+	call	__fadd
+	private	tmp91
+tmp91:
+	push	bc
+	pop	hl
+	ld	e, a
+	private	tmp92
+tmp92:
+	loc	1 19 28 is_stmt 1
+	ld	bc, (ix - 12)
+	ld	a, (ix - 13)
+	call	__fdiv
+	private	tmp93
+tmp93:
+	push	bc
+	pop	iy
+	ld	d, a
+	loc	1 19 41 is_stmt 0
+	ld	bc, (ix - 8)
+	ld	a, (ix - 9)
+	call	__fdiv
+	private	tmp94
+tmp94:
+	ld	(ix - 8), bc
+	ld	(ix - 9), a
+	private	tmp95
+tmp95:
+	loc	1 33 29 is_stmt 1
+	ld	bc, (ix + 9)
+	ld	a, (ix - 1)
+	lea	hl, iy
+	ld	e, d
+	call	__fsub
+	private	tmp96
+tmp96:
+	loc	1 0 29 is_stmt 0
+	ld	iy, (ix + 6)
+	loc	1 33 21
+	ld	(iy), bc
+	ld	(iy + 3), a
+	loc	1 33 46
+	ld	bc, (ix - 4)
+	ld	a, (ix - 5)
+	ld	hl, (ix - 8)
+	ld	e, (ix - 9)
+	call	__fsub
+	private	tmp97
+tmp97:
+	loc	1 33 21
+	ld	(iy + 4), bc
+	ld	(iy + 7), a
+	private	tmp98
+tmp98:
+	loc	1 61 5 is_stmt 1
+	lea	hl, iy
+	ld	sp, ix
+	pop	ix
+	cfi_def_cfa sp, 3
+	cfi_restore ix
+	ret
+	private	tmp99
+tmp99:
+	section	.text,"ax",@progbits
+	private	func_end11
+func_end11:
+	cfi_endproc
+
+	section	.text,"ax",@progbits
+	public	_get_face_normal
+_get_face_normal:
+	private	func_begin12
+func_begin12:
+	loc	1 64 0
+	cfi_startproc
+	ld	hl, -38
+	call	__frameset
+	private	tmp100
+tmp100:
+	cfi_def_cfa ix, 6
+	cfi_offset ix, -6
+	lea	iy, ix + 9
+	private	tmp101
+tmp101:
+	loc	1 76 25 prologue_end
+	lea	hl, iy + 3
+	loc	1 71 26
+	ld	a, (hl)
+	private	tmp102
+tmp102:
+	loc	1 0 26 is_stmt 0
+	ld	(ix - 18), a
+	loc	1 72 26 is_stmt 1
+	ld	hl, (ix + 22)
+	ld	(ix - 7), hl
+	ld	a, (ix + 25)
+	private	tmp103
+tmp103:
+	loc	1 0 26 is_stmt 0
+	ld	(ix - 3), a
+	loc	1 73 26 is_stmt 1
+	ld	a, (ix + 21)
+	private	tmp104
+tmp104:
+	loc	1 0 26 is_stmt 0
+	ld	(ix - 4), a
+	loc	1 74 26 is_stmt 1
+	ld	hl, (ix + 13)
+	ld	(ix - 16), hl
+	ld	a, (ix + 16)
+	private	tmp105
+tmp105:
+	loc	1 0 26 is_stmt 0
+	ld	(ix - 17), a
+	loc	1 76 25 is_stmt 1
+	ld	iy, (ix + 9)
+	private	tmp106
+tmp106:
+	ld	de, (ix + 12)
+	ld	bc, (ix + 15)
+	loc	1 0 0 is_stmt 0
+	ld	a, e
+	private	tmp107
+tmp107:
+	loc	1 76 25
+	ld	(ix - 10), a
+	ld	hl, 32
+	push	hl
+	lea	hl, iy
+	call	__llshru
+	private	tmp108
+tmp108:
+	push	hl
+	pop	iy
+	ld	(ix - 13), iy
+	pop	hl
+	loc	1 0 0
+	ld	d, e
+	private	tmp109
+tmp109:
+	loc	1 33 29 is_stmt 1
+	ld	(ix - 21), d
+	ld	bc, (ix + 18)
+	ld	a, (ix - 4)
+	ld	hl, (ix + 9)
+	ld	e, (ix - 10)
+	call	__fsub
+	private	tmp110
+tmp110:
+	ld	(ix - 25), bc
+	ld	(ix - 26), a
+	loc	1 33 46 is_stmt 0
+	ld	bc, (ix - 7)
+	ld	a, (ix - 3)
+	lea	hl, iy
+	ld	e, d
+	call	__fsub
+	private	tmp111
+tmp111:
+	push	bc
+	pop	iy
+	ld	(ix - 22), a
+	private	tmp112
+tmp112:
+	loc	1 11 28 is_stmt 1
+	ld	bc, (ix - 25)
+	ld	a, (ix - 26)
+	or	a, a
+	sbc	hl, hl
+	ld	e, 63
+	call	__fmul
+	private	tmp113
+tmp113:
+	ld	(ix - 25), bc
+	ld	d, a
+	loc	1 11 41 is_stmt 0
+	lea	bc, iy
+	ld	a, (ix - 22)
+	call	__fmul
+	private	tmp114
+tmp114:
+	push	bc
+	pop	iy
+	ld	(ix - 22), a
+	private	tmp115
+tmp115:
+	loc	1 23 29 is_stmt 1
+	ld	bc, (ix - 25)
+	ld	a, d
+	ld	hl, (ix + 9)
+	ld	e, (ix - 10)
+	call	__fadd
+	private	tmp116
+tmp116:
+	ld	(ix - 25), bc
+	ld	(ix - 26), a
+	private	tmp117
+tmp117:
+	loc	1 23 46 is_stmt 0
+	lea	bc, iy
+	ld	a, (ix - 22)
+	ld	hl, (ix - 13)
+	ld	e, (ix - 21)
+	call	__fadd
+	private	tmp118
+tmp118:
+	ld	(ix - 21), bc
+	ld	(ix - 22), a
+	private	tmp119
+tmp119:
+	loc	1 33 29 is_stmt 1
+	ld	bc, (ix + 18)
+	ld	a, (ix - 4)
+	ld	hl, (ix + 9)
+	ld	e, (ix - 18)
+	call	__fsub
+	private	tmp120
+tmp120:
+	push	bc
+	pop	iy
+	ld	d, a
+	loc	1 33 46 is_stmt 0
+	ld	bc, (ix - 16)
+	ld	a, (ix - 17)
+	ld	hl, (ix - 7)
+	ld	e, (ix - 3)
+	call	__fsub
+	private	tmp121
+tmp121:
+	ld	(ix - 10), bc
+	ld	(ix - 13), a
+	private	tmp122
+tmp122:
+	loc	1 0 46
+	ld	(ix - 29), iy
+	private	tmp123
+tmp123:
+	loc	1 23 29 is_stmt 1
+	lea	bc, iy
+	ld	(ix - 30), d
+	ld	a, d
+	ld	hl, (ix - 25)
+	ld	e, (ix - 26)
+	call	__fadd
+	private	tmp124
+tmp124:
+	ld	(ix - 37), bc
+	ld	(ix - 38), a
+	private	tmp125
+tmp125:
+	loc	1 23 46 is_stmt 0
+	ld	bc, (ix - 10)
+	ld	a, (ix - 13)
+	ld	hl, (ix - 21)
+	ld	e, (ix - 22)
+	call	__fadd
+	private	tmp126
+tmp126:
+	ld	(ix - 33), bc
+	ld	(ix - 34), a
+	private	tmp127
+tmp127:
+	loc	1 33 29 is_stmt 1
+	ld	bc, (ix + 9)
+	ld	a, (ix - 18)
+	ld	hl, (ix + 18)
+	ld	e, (ix - 4)
+	call	__fsub
+	private	tmp128
+tmp128:
+	push	bc
+	pop	iy
+	ld	d, a
+	loc	1 33 46 is_stmt 0
+	ld	bc, (ix - 7)
+	ld	a, (ix - 3)
+	ld	hl, (ix - 16)
+	ld	e, (ix - 17)
+	call	__fsub
+	private	tmp129
+tmp129:
+	ld	(ix - 3), bc
+	ld	(ix - 4), a
+	private	tmp130
+tmp130:
+	loc	1 0 46
+	ld	(ix - 16), iy
+	private	tmp131
+tmp131:
+	loc	1 23 29 is_stmt 1
+	lea	bc, iy
+	ld	(ix - 17), d
+	ld	a, d
+	ld	hl, (ix - 25)
+	ld	e, (ix - 26)
+	call	__fadd
+	private	tmp132
+tmp132:
+	ld	(ix - 25), bc
+	ld	(ix - 26), a
+	private	tmp133
+tmp133:
+	loc	1 23 46 is_stmt 0
+	ld	bc, (ix - 3)
+	ld	a, (ix - 4)
+	ld	hl, (ix - 21)
+	ld	e, (ix - 22)
+	call	__fadd
+	private	tmp134
+tmp134:
+	ld	(ix - 7), bc
+	ld	(ix - 18), a
+	private	tmp135
+tmp135:
+	loc	1 33 29 is_stmt 1
+	ld	bc, (ix - 37)
+	ld	a, (ix - 38)
+	ld	hl, 2097152
+	ld	e, -61
+	call	__fadd
+	private	tmp136
+tmp136:
+	push	bc
+	pop	iy
+	ld	d, a
+	loc	1 33 46 is_stmt 0
+	ld	bc, (ix - 33)
+	ld	a, (ix - 34)
+	ld	hl, -1048576
+	dec	e
+	call	__fadd
+	private	tmp137
+tmp137:
+	loc	1 37 40 is_stmt 1
+	push	bc
+	pop	hl
+	ld	e, a
+	call	__fmul
+	private	tmp138
+tmp138:
+	ld	(ix - 21), bc
+	ld	(ix - 22), a
+	loc	1 37 32 is_stmt 0
+	lea	bc, iy
+	ld	a, d
+	lea	hl, iy
+	ld	e, d
+	call	__fmul
+	private	tmp139
+tmp139:
+	ld	hl, (ix - 21)
+	ld	e, (ix - 22)
+	call	__fadd
+	private	tmp140
+tmp140:
+	ld	l, a
+	loc	1 37 12
+	push	hl
+	push	bc
+	call	_sqrtf
+	private	tmp141
+tmp141:
+	ld	(ix - 21), hl
+	ld	(ix - 22), e
+	pop	hl
+	pop	hl
+	private	tmp142
+tmp142:
+	loc	1 33 29 is_stmt 1
+	ld	bc, (ix - 25)
+	ld	a, (ix - 26)
+	ld	hl, 2097152
+	ld	e, -61
+	call	__fadd
+	private	tmp143
+tmp143:
+	push	bc
+	pop	iy
+	ld	d, a
+	loc	1 33 46 is_stmt 0
+	ld	bc, (ix - 7)
+	ld	a, (ix - 18)
+	ld	hl, -1048576
+	dec	e
+	call	__fadd
+	private	tmp144
+tmp144:
+	loc	1 37 40 is_stmt 1
+	push	bc
+	pop	hl
+	ld	e, a
+	call	__fmul
+	private	tmp145
+tmp145:
+	ld	(ix - 7), bc
+	ld	(ix - 18), a
+	loc	1 37 32 is_stmt 0
+	lea	bc, iy
+	ld	a, d
+	lea	hl, iy
+	ld	e, d
+	call	__fmul
+	private	tmp146
+tmp146:
+	ld	hl, (ix - 7)
+	ld	e, (ix - 18)
+	call	__fadd
+	private	tmp147
+tmp147:
+	ld	l, a
+	loc	1 37 12
+	push	hl
+	push	bc
+	call	_sqrtf
+	private	tmp148
+tmp148:
+	pop	bc
+	pop	bc
+	private	tmp149
+tmp149:
+	loc	1 90 30 is_stmt 1
+	ld	bc, (ix - 21)
+	ld	a, (ix - 22)
+	call	__fcmp
+	private	tmp150
+tmp150:
+	jp	m, BB12_2
+	private	tmp151
+tmp151:
+	loc	1 0 30 is_stmt 0
+	ld	a, 0
+	jp	BB12_3
+BB12_2:
+	ld	a, 1
+BB12_3:
+	ld	de, 0
+	ld	e, (ix - 13)
+	ld.sis	bc, 0
+	ld	hl, 32
+	push	hl
+	ld	hl, (ix - 10)
+	call	__llshl
+	private	tmp152
+tmp152:
+	ld	(ix - 7), hl
+	pop	iy
+	or	a, a
+	sbc	hl, hl
+	ld	l, (ix - 30)
+	ld	iy, 0
+	push	iy
+	push	hl
+	ld	hl, (ix - 29)
+	push	hl
+	ld	hl, (ix - 7)
+	call	__lladd
+	private	tmp153
+tmp153:
+	ld	(ix - 7), hl
+	ld	(ix - 10), de
+	ld	(ix - 13), bc
+	pop	hl
+	pop	hl
+	pop	hl
+	ld	de, 0
+	ld	e, (ix - 4)
+	ld	hl, 32
+	push	hl
+	ld	hl, (ix - 3)
+	ld.sis	bc, 0
+	call	__llshl
+	private	tmp154
+tmp154:
+	ld	(ix - 3), hl
+	pop	iy
+	or	a, a
+	sbc	hl, hl
+	ld	l, (ix - 17)
+	ld	iy, 0
+	push	iy
+	push	hl
+	ld	iy, (ix - 16)
+	push	iy
+	ld	hl, (ix - 3)
+	call	__lladd
+	private	tmp155
+tmp155:
+	pop	iy
+	pop	iy
+	pop	iy
+	bit	0, a
+	jp	nz, BB12_5
+	ld	(ix - 7), hl
+BB12_5:
+	bit	0, a
+	jp	nz, BB12_7
+	ld	(ix - 10), de
+BB12_7:
+	ld	iy, (ix + 6)
+	bit	0, a
+	ld	de, (ix - 13)
+	jp	nz, BB12_9
+	ld	e, c
+	ld	d, b
+BB12_9:
+	ld	hl, (ix - 7)
+	ld	(iy), hl
+	ld	hl, (ix - 10)
+	ld	(iy + 3), hl
+	ld	(iy + 6), e
+	ld	(iy + 7), d
+	loc	1 94 1 is_stmt 1
+	lea	hl, iy
+	ld	sp, ix
+	pop	ix
+	cfi_def_cfa sp, 3
+	cfi_restore ix
+	ret
+	private	tmp156
+tmp156:
+	section	.text,"ax",@progbits
+	private	func_end12
+func_end12:
+	cfi_endproc
+
+	section	.debug_loclists,"",@progbits
+	dd	debug_list_header_end0-debug_list_header_start0
+	private	debug_list_header_start0
+debug_list_header_start0:
+	dw	5
+	db	3
+	db	0
+	dd	3
+	private	loclists_table_base0
+loclists_table_base0:
+	dd	debug_loc0-loclists_table_base0
+	dd	debug_loc1-loclists_table_base0
+	dd	debug_loc2-loclists_table_base0
+	private	debug_loc0
+debug_loc0:
+	db	4
+	uleb128	tmp101-func_begin0
+	uleb128	tmp106-func_begin0
+	db	2
+	db	117
+	db	0
+	db	0
+	private	debug_loc1
+debug_loc1:
+	db	4
+	uleb128	tmp135-func_begin0
+	uleb128	tmp151-func_begin0
+	db	18
+	db	16
+	db	128
+	db	128
+	db	128
+	db	153
+	db	4
+	db	159
+	db	147
+	db	4
+	db	16
+	db	128
+	db	128
+	db	192
+	db	151
+	db	4
+	db	159
+	db	147
+	db	4
+	db	0
+	private	debug_loc2
+debug_loc2:
+	db	4
+	uleb128	tmp142-func_begin0
+	uleb128	tmp151-func_begin0
+	db	18
+	db	16
+	db	128
+	db	128
+	db	128
+	db	153
+	db	4
+	db	159
+	db	147
+	db	4
+	db	16
+	db	128
+	db	128
+	db	192
+	db	151
+	db	4
+	db	159
+	db	147
+	db	4
+	db	0
+	private	debug_list_header_end0
+debug_list_header_end0:
+	section	.debug_abbrev,"",@progbits
+	private	abbrev_start0
+abbrev_start0:
+	db	1
+	db	17
+	db	1
+	db	37
+	db	37
+	db	19
+	db	5
+	db	3
+	db	37
+	db	114
+	db	23
+	db	16
+	db	23
+	db	27
+	db	37
+	db	17
+	db	27
+	db	18
+	db	6
+	db	115
+	db	23
+	db	"Œ"
+	db	23
+	db	0
+	db	0
+	db	2
+	db	46
+	db	1
+	db	17
+	db	27
+	db	18
+	db	6
+	db	64
+	db	24
+	db	122
+	db	25
+	db	3
+	db	37
+	db	58
+	db	11
+	db	59
+	db	11
+	db	39
+	db	25
+	db	73
+	db	19
+	db	63
+	db	25
+	db	0
+	db	0
+	db	3
+	db	5
+	db	0
+	db	3
+	db	37
+	db	58
+	db	11
+	db	59
+	db	11
+	db	73
+	db	19
+	db	0
+	db	0
+	db	4
+	db	46
+	db	1
+	db	17
+	db	27
+	db	18
+	db	6
+	db	64
+	db	24
+	db	122
+	db	25
+	db	49
+	db	19
+	db	0
+	db	0
+	db	5
+	db	5
+	db	0
+	db	49
+	db	19
+	db	0
+	db	0
+	db	6
+	db	46
+	db	1
+	db	3
+	db	37
+	db	58
+	db	11
+	db	59
+	db	11
+	db	39
+	db	25
+	db	73
+	db	19
+	db	63
+	db	25
+	db	32
+	db	33
+	db	1
+	db	0
+	db	0
+	db	7
+	db	36
+	db	0
+	db	3
+	db	37
+	db	62
+	db	11
+	db	11
+	db	11
+	db	0
+	db	0
+	db	8
+	db	22
+	db	0
+	db	73
+	db	19
+	db	3
+	db	37
+	db	58
+	db	11
+	db	59
+	db	11
+	db	0
+	db	0
+	db	9
+	db	19
+	db	1
+	db	11
+	db	11
+	db	58
+	db	11
+	db	59
+	db	11
+	db	0
+	db	0
+	db	10
+	db	13
+	db	0
+	db	3
+	db	37
+	db	73
+	db	19
+	db	58
+	db	11
+	db	59
+	db	11
+	db	56
+	db	11
+	db	0
+	db	0
+	db	11
+	db	52
+	db	0
+	db	3
+	db	37
+	db	58
+	db	11
+	db	59
+	db	11
+	db	73
+	db	19
+	db	0
+	db	0
+	db	12
+	db	29
+	db	0
+	db	49
+	db	19
+	db	17
+	db	27
+	db	18
+	db	6
+	db	88
+	db	11
+	db	89
+	db	11
+	db	87
+	db	11
+	db	0
+	db	0
+	db	13
+	db	5
+	db	0
+	db	2
+	db	34
+	db	3
+	db	37
+	db	58
+	db	11
+	db	59
+	db	11
+	db	73
+	db	19
+	db	0
+	db	0
+	db	14
+	db	29
+	db	1
+	db	49
+	db	19
+	db	17
+	db	27
+	db	18
+	db	6
+	db	88
+	db	11
+	db	89
+	db	11
+	db	87
+	db	11
+	db	0
+	db	0
+	db	15
+	db	5
+	db	0
+	db	28
+	db	15
+	db	49
+	db	19
+	db	0
+	db	0
+	db	16
+	db	5
+	db	0
+	db	2
+	db	34
+	db	49
+	db	19
+	db	0
+	db	0
+	db	0
+	section	.debug_info,"",@progbits
+	private	cu_begin0
+cu_begin0:
+	dd	debug_info_end0-debug_info_start0
+	private	debug_info_start0
+debug_info_start0:
+	dw	5
+	db	1
+	db	3
+	dd	abbrev_start0
+	db	1
+	db	0
+	dw	12
+	db	1
+	dd	str_offsets_base0
+	dd	line_table_start0
+	db	2
+	db	0
+	dd	func_end12-func_begin0
+	dd	addr_table_base0
+	dd	loclists_table_base0
+	db	2
+	db	0
+	dd	func_end0-func_begin0
+	db	1
+	db	84
+
+	db	18
+	db	1
+	db	6
+
+	dd	161
+
+	db	3
+	db	10
+	db	1
+	db	6
+	dd	161
+	db	3
+	db	11
+	db	1
+	db	6
+	dd	161
+	db	0
+	db	4
+	db	1
+	dd	func_end1-func_begin1
+	db	1
+	db	84
+
+	dd	453
+	db	5
+	dd	461
+	db	5
+	dd	469
+	db	0
+	db	4
+	db	2
+	dd	func_end2-func_begin2
+	db	1
+	db	84
+
+	dd	495
+	db	5
+	dd	503
+	db	5
+	dd	511
+	db	0
+	db	4
+	db	3
+	dd	func_end3-func_begin3
+	db	1
+	db	84
+
+	dd	642
+	db	5
+	dd	650
+	db	5
+	dd	658
+	db	0
+	db	6
+	db	3
+	db	1
+	db	36
+
+	dd	157
+
+
+	db	3
+	db	5
+	db	1
+	db	36
+	dd	161
+	db	0
+	db	7
+	db	4
+	db	4
+	db	4
+	db	8
+	dd	169
+	db	8
+	db	2
+	db	8
+	db	9
+	db	8
+	db	2
+	db	5
+	db	10
+	db	6
+	dd	157
+	db	2
+	db	6
+	db	0
+	db	10
+	db	7
+	dd	157
+	db	2
+	db	7
+	db	4
+	db	0
+	db	2
+	db	4
+	dd	func_end4-func_begin4
+	db	1
+	db	84
+
+	db	19
+	db	1
+	db	26
+
+	dd	161
+
+	db	3
+	db	5
+	db	1
+	db	26
+	dd	161
+	db	3
+	db	24
+	db	1
+	db	26
+	dd	157
+	db	11
+	db	25
+	db	1
+	db	27
+	dd	157
+	db	11
+	db	26
+	db	1
+	db	28
+	dd	157
+	db	12
+	dd	140
+	db	5
+	dd	tmp27-tmp20
+	db	1
+	db	27
+	db	20
+	db	0
+	db	4
+	db	6
+	dd	func_end5-func_begin5
+	db	1
+	db	84
+
+	dd	140
+	db	5
+	dd	148
+	db	0
+	db	4
+	db	7
+	dd	func_end6-func_begin6
+	db	1
+	db	84
+
+	dd	520
+	db	5
+	dd	528
+	db	5
+	dd	536
+	db	0
+	db	4
+	db	8
+	dd	func_end7-func_begin7
+	db	1
+	db	84
+
+	dd	478
+	db	5
+	dd	486
+	db	0
+	db	2
+	db	9
+	dd	func_end8-func_begin8
+	db	1
+	db	84
+
+	db	20
+	db	1
+	db	44
+
+	dd	161
+
+	db	3
+	db	5
+	db	1
+	db	44
+	dd	161
+	db	3
+	db	27
+	db	1
+	db	44
+	dd	157
+	db	11
+	db	6
+	db	1
+	db	45
+	dd	157
+	db	11
+	db	7
+	db	1
+	db	46
+	dd	157
+	db	0
+	db	2
+	db	10
+	dd	func_end9-func_begin9
+	db	1
+	db	84
+
+	db	21
+	db	1
+	db	50
+
+	dd	161
+
+	db	3
+	db	5
+	db	1
+	db	50
+	dd	161
+	db	11
+	db	28
+	db	1
+	db	51
+	dd	157
+	db	12
+	dd	140
+	db	11
+	dd	tmp72-tmp65
+	db	1
+	db	51
+	db	23
+	db	0
+	db	4
+	db	12
+	dd	func_end10-func_begin10
+	db	1
+	db	84
+
+	dd	428
+	db	5
+	dd	436
+	db	5
+	dd	444
+	db	0
+	db	6
+	db	9
+	db	1
+	db	55
+
+	dd	157
+
+
+	db	3
+	db	10
+	db	1
+	db	55
+	dd	161
+	db	3
+	db	11
+	db	1
+	db	55
+	dd	161
+	db	0
+	db	6
+	db	12
+	db	1
+	db	10
+
+	dd	161
+
+
+	db	3
+	db	5
+	db	1
+	db	10
+	dd	161
+	db	3
+	db	13
+	db	1
+	db	10
+	dd	157
+	db	0
+	db	6
+	db	14
+	db	1
+	db	40
+
+	dd	157
+
+
+	db	3
+	db	5
+	db	1
+	db	40
+	dd	161
+	db	0
+	db	6
+	db	15
+	db	1
+	db	18
+
+	dd	161
+
+
+	db	3
+	db	5
+	db	1
+	db	18
+	dd	161
+	db	3
+	db	13
+	db	1
+	db	18
+	dd	157
+	db	0
+	db	6
+	db	16
+	db	1
+	db	32
+
+	dd	161
+
+
+	db	3
+	db	10
+	db	1
+	db	32
+	dd	161
+	db	3
+	db	11
+	db	1
+	db	32
+	dd	161
+	db	0
+	db	2
+	db	13
+	dd	func_end11-func_begin11
+	db	1
+	db	84
+
+	db	22
+	db	1
+	db	60
+
+	dd	161
+
+	db	3
+	db	10
+	db	1
+	db	60
+	dd	161
+	db	3
+	db	11
+	db	1
+	db	60
+	dd	161
+	db	12
+	dd	428
+	db	14
+	dd	tmp85-tmp81
+	db	1
+	db	61
+	db	71
+	db	12
+	dd	453
+	db	15
+	dd	tmp88-tmp85
+	db	1
+	db	61
+	db	47
+	db	12
+	dd	478
+	db	16
+	dd	tmp92-tmp88
+	db	1
+	db	61
+	db	93
+	db	12
+	dd	495
+	db	17
+	dd	tmp95-tmp92
+	db	1
+	db	61
+	db	31
+	db	12
+	dd	520
+	db	18
+	dd	tmp98-tmp95
+	db	1
+	db	61
+	db	12
+	db	0
+	db	6
+	db	17
+	db	1
+	db	22
+
+	dd	161
+
+
+	db	3
+	db	10
+	db	1
+	db	22
+	dd	161
+	db	3
+	db	11
+	db	1
+	db	22
+	dd	161
+	db	0
+	db	2
+	db	19
+	dd	func_end12-func_begin12
+	db	1
+	db	84
+
+	db	23
+	db	1
+	db	64
+
+	dd	161
+
+	db	13
+	db	0
+	db	29
+	db	1
+	db	64
+	dd	161
+	db	3
+	db	30
+	db	1
+	db	64
+	dd	161
+	db	11
+	db	31
+	db	1
+	db	66
+	dd	161
+	db	11
+	db	32
+	db	1
+	db	67
+	dd	161
+	db	11
+	db	33
+	db	1
+	db	68
+	dd	161
+	db	11
+	db	34
+	db	1
+	db	69
+	dd	161
+	db	11
+	db	35
+	db	1
+	db	76
+	dd	161
+	db	11
+	db	36
+	db	1
+	db	78
+	dd	161
+	db	11
+	db	37
+	db	1
+	db	81
+	dd	161
+	db	11
+	db	38
+	db	1
+	db	83
+	dd	161
+	db	11
+	db	39
+	db	1
+	db	85
+	dd	161
+	db	11
+	db	40
+	db	1
+	db	87
+	dd	157
+	db	11
+	db	41
+	db	1
+	db	88
+	dd	157
+	db	12
+	dd	520
+	db	20
+	dd	tmp112-tmp109
+	db	1
+	db	78
+	db	55
+	db	14
+	dd	453
+	db	21
+	dd	tmp115-tmp112
+	db	1
+	db	78
+	db	37
+	db	15
+	db	"€€€ø"
+	dd	469
+	db	0
+	db	12
+	dd	642
+	db	22
+	dd	tmp119-tmp115
+	db	1
+	db	78
+	db	29
+	db	12
+	dd	520
+	db	23
+	dd	tmp123-tmp119
+	db	1
+	db	80
+	db	18
+	db	12
+	dd	642
+	db	24
+	dd	tmp127-tmp123
+	db	1
+	db	81
+	db	24
+	db	12
+	dd	520
+	db	25
+	dd	tmp131-tmp127
+	db	1
+	db	82
+	db	19
+	db	12
+	dd	642
+	db	26
+	dd	tmp135-tmp131
+	db	1
+	db	83
+	db	25
+	db	14
+	dd	520
+	db	27
+	dd	tmp137-tmp135
+	db	1
+	db	87
+	db	48
+	db	16
+	db	1
+	dd	536
+	db	0
+	db	12
+	dd	140
+	db	28
+	dd	tmp142-tmp137
+	db	1
+	db	87
+	db	34
+	db	14
+	dd	520
+	db	29
+	dd	tmp144-tmp142
+	db	1
+	db	88
+	db	49
+	db	16
+	db	2
+	dd	536
+	db	0
+	db	12
+	dd	140
+	db	30
+	dd	tmp149-tmp144
+	db	1
+	db	88
+	db	35
+	db	0
+	db	0
+	private	debug_info_end0
+debug_info_end0:
+	section	.debug_str_offsets,"",@progbits
+	dd	172
+	dw	5
+	dw	0
+	private	str_offsets_base0
+str_offsets_base0:
+	section	.debug_str,"MS",@progbits,1
+	private	info_string0
+info_string0:
+	db	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6c61664110f888c0285ae4c48b150c9a7a4361bb)", 0
+	private	info_string1
+info_string1:
+	db	"src\vector.c", 0
+	private	info_string2
+info_string2:
+	db	"C:\CEdev\projects\aero-CE", 0
+	private	info_string3
+info_string3:
+	db	"vec_Magnitude", 0
+	private	info_string4
+info_string4:
+	db	"float", 0
+	private	info_string5
+info_string5:
+	db	"vec", 0
+	private	info_string6
+info_string6:
+	db	"x", 0
+	private	info_string7
+info_string7:
+	db	"y", 0
+	private	info_string8
+info_string8:
+	db	"vec2_t", 0
+	private	info_string9
+info_string9:
+	db	"vec_Dot", 0
+	private	info_string10
+info_string10:
+	db	"vec1", 0
+	private	info_string11
+info_string11:
+	db	"vec2", 0
+	private	info_string12
+info_string12:
+	db	"vec_MultiplyFloat", 0
+	private	info_string13
+info_string13:
+	db	"val", 0
+	private	info_string14
+info_string14:
+	db	"vec_SqrMagnitude", 0
+	private	info_string15
+info_string15:
+	db	"vec_DivideFloat", 0
+	private	info_string16
+info_string16:
+	db	"vec_Subtract", 0
+	private	info_string17
+info_string17:
+	db	"vec_Add", 0
+	private	info_string18
+info_string18:
+	db	"vec_Multiply", 0
+	private	info_string19
+info_string19:
+	db	"vec_AddLength", 0
+	private	info_string20
+info_string20:
+	db	"vec_Rotate", 0
+	private	info_string21
+info_string21:
+	db	"vec_Normalize", 0
+	private	info_string22
+info_string22:
+	db	"vec_PerpendicularComponent", 0
+	private	info_string23
+info_string23:
+	db	"get_face_normal", 0
+	private	info_string24
+info_string24:
+	db	"add", 0
+	private	info_string25
+info_string25:
+	db	"length", 0
+	private	info_string26
+info_string26:
+	db	"ratio", 0
+	private	info_string27
+info_string27:
+	db	"radians", 0
+	private	info_string28
+info_string28:
+	db	"magnitude", 0
+	private	info_string29
+info_string29:
+	db	"vert1", 0
+	private	info_string30
+info_string30:
+	db	"vert2", 0
+	private	info_string31
+info_string31:
+	db	"normal_vec", 0
+	private	info_string32
+info_string32:
+	db	"normal_vec2", 0
+	private	info_string33
+info_string33:
+	db	"norm_vert1", 0
+	private	info_string34
+info_string34:
+	db	"norm_vert2", 0
+	private	info_string35
+info_string35:
+	db	"subtracter", 0
+	private	info_string36
+info_string36:
+	db	"middle_of_face", 0
+	private	info_string37
+info_string37:
+	db	"vec_check", 0
+	private	info_string38
+info_string38:
+	db	"vec_check2", 0
+	private	info_string39
+info_string39:
+	db	"center_vec", 0
+	private	info_string40
+info_string40:
+	db	"distance_from_center", 0
+	private	info_string41
+info_string41:
+	db	"distance_from_center2", 0
+	section	.debug_str_offsets,"",@progbits
+	dd	info_string0
+	dd	info_string1
+	dd	info_string2
+	dd	info_string3
+	dd	info_string4
+	dd	info_string5
+	dd	info_string6
+	dd	info_string7
+	dd	info_string8
+	dd	info_string9
+	dd	info_string10
+	dd	info_string11
+	dd	info_string12
+	dd	info_string13
+	dd	info_string14
+	dd	info_string15
+	dd	info_string16
+	dd	info_string17
+	dd	info_string18
+	dd	info_string19
+	dd	info_string20
+	dd	info_string21
+	dd	info_string22
+	dd	info_string23
+	dd	info_string24
+	dd	info_string25
+	dd	info_string26
+	dd	info_string27
+	dd	info_string28
+	dd	info_string29
+	dd	info_string30
+	dd	info_string31
+	dd	info_string32
+	dd	info_string33
+	dd	info_string34
+	dd	info_string35
+	dd	info_string36
+	dd	info_string37
+	dd	info_string38
+	dd	info_string39
+	dd	info_string40
+	dd	info_string41
+	section	.debug_addr,"",@progbits
+	dd	debug_addr_end0-debug_addr_start0
+	private	debug_addr_start0
+debug_addr_start0:
+	dw	5
+	db	3
+	db	0
+	private	addr_table_base0
+addr_table_base0:
+	dl	func_begin0
+	dl	func_begin1
+	dl	func_begin2
+	dl	func_begin3
+	dl	func_begin4
+	dl	tmp20
+	dl	func_begin5
+	dl	func_begin6
+	dl	func_begin7
+	dl	func_begin8
+	dl	func_begin9
+	dl	tmp65
+	dl	func_begin10
+	dl	func_begin11
+	dl	tmp81
+	dl	tmp85
+	dl	tmp88
+	dl	tmp92
+	dl	tmp95
+	dl	func_begin12
+	dl	tmp109
+	dl	tmp112
+	dl	tmp115
+	dl	tmp119
+	dl	tmp123
+	dl	tmp127
+	dl	tmp131
+	dl	tmp135
+	dl	tmp137
+	dl	tmp142
+	dl	tmp144
+	private	debug_addr_end0
+debug_addr_end0:
+	ident	"clang version 15.0.0 (https://github.com/jacobly0/llvm-project 6c61664110f888c0285ae4c48b150c9a7a4361bb)"
+	section	.debug_line,"",@progbits
+line_table_start0:
+	extern	__Unwind_SjLj_Register
+	extern	__Unwind_SjLj_Unregister
+	extern	__frameset
+	extern	__llshru
+	extern	__fneg
+	extern	__lladd
+	extern	__fdiv
+	extern	__fadd
+	extern	_sinf
+	extern	__llshl
+	extern	_cosf
+	extern	_sqrtf
+	extern	__frameset0
+	extern	__fsub
+	extern	__fmul
+	extern	__fcmp

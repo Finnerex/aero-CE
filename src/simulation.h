@@ -26,7 +26,6 @@ typedef struct {
 typedef struct {
     vec2_t wind_velocity; // this is in meters though
     float wind_speed;
-    float wind_direction;
 
     float air_density;
     vec2_t net_force;
@@ -36,7 +35,7 @@ typedef struct {
     
 } sim_state_t;
 
-vec2_t calculate_net_force(sim_state_t* sim_state);
+vec2_t calculate_net_force(sim_state_t sim_state);
 void update_sim_state(sim_state_t* sim_state);
 
 #endif
